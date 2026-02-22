@@ -1,0 +1,167 @@
+{
+  "screen": "Onboarding",
+  "description": "4-step introduction flow shown to first-time users",
+  "layout": {
+    "background": "{color.background.primary}",
+    "display": "flex",
+    "flexDirection": "column",
+    "height": "100%",
+    "padding": "{spacing.6}"
+  },
+  "steps": [
+    {
+      "id": 1,
+      "title": "결혼의 모든 순간, 웨딩메이트",
+      "subtitle": "결혼 준비부터 신혼 생활까지\n당신의 특별한 여정을 함께합니다",
+      "illustration": {
+        "description": "Couple holding hands with wedding ring motif, soft pastel colors",
+        "width": "280px",
+        "height": "280px",
+        "position": "center"
+      },
+      "theme": "welcome"
+    },
+    {
+      "id": 2,
+      "title": "체계적인 결혼 준비",
+      "subtitle": "체크리스트, 예산 관리, 일정 관리까지\n한 곳에서 손쉽게 관리하세요",
+      "illustration": {
+        "description": "Checklist with calendar and budget icons in rose gold tones",
+        "width": "280px",
+        "height": "280px",
+        "position": "center"
+      },
+      "theme": "wedding-prep"
+    },
+    {
+      "id": 3,
+      "title": "함께 나누는 이야기",
+      "subtitle": "예비부부, 신혼부부들과\n정보와 경험을 공유하세요",
+      "illustration": {
+        "description": "Community chat bubbles with hearts, group of happy people",
+        "width": "280px",
+        "height": "280px",
+        "position": "center"
+      },
+      "theme": "community"
+    },
+    {
+      "id": 4,
+      "title": "시작해볼까요?",
+      "subtitle": "현재 상태를 선택해주세요",
+      "illustration": {
+        "description": "Three paths diverging with icons for each status",
+        "width": "200px",
+        "height": "200px",
+        "position": "center"
+      },
+      "theme": "start",
+      "statusSelection": {
+        "options": [
+          {
+            "id": "preparing",
+            "label": "예비부부",
+            "description": "결혼을 준비하고 있어요",
+            "icon": "ring",
+            "style": {
+              "width": "100%",
+              "padding": "{spacing.4}",
+              "borderRadius": "{borderRadius.lg}",
+              "border": "1px solid {color.neutral.200}",
+              "selectedBorder": "2px solid {color.primary.500}",
+              "selectedBackground": "{color.primary.50}",
+              "marginBottom": "{spacing.3}"
+            }
+          },
+          {
+            "id": "newlywed",
+            "label": "신혼부부",
+            "description": "결혼한 지 2년 이내예요",
+            "icon": "couple",
+            "style": {
+              "width": "100%",
+              "padding": "{spacing.4}",
+              "borderRadius": "{borderRadius.lg}",
+              "border": "1px solid {color.neutral.200}",
+              "selectedBorder": "2px solid {color.primary.500}",
+              "selectedBackground": "{color.primary.50}",
+              "marginBottom": "{spacing.3}"
+            }
+          },
+          {
+            "id": "married",
+            "label": "기혼",
+            "description": "결혼 생활을 하고 있어요",
+            "icon": "home",
+            "style": {
+              "width": "100%",
+              "padding": "{spacing.4}",
+              "borderRadius": "{borderRadius.lg}",
+              "border": "1px solid {color.neutral.200}",
+              "selectedBorder": "2px solid {color.primary.500}",
+              "selectedBackground": "{color.primary.50}"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "navigation": {
+    "pageIndicator": {
+      "position": "bottom-center",
+      "marginBottom": "{spacing.24}",
+      "dots": {
+        "count": 4,
+        "size": "8px",
+        "activeSize": "24px",
+        "gap": "{spacing.2}",
+        "borderRadius": "{borderRadius.full}",
+        "inactiveColor": "{color.neutral.200}",
+        "activeColor": "{color.primary.500}",
+        "transition": "width 300ms ease"
+      }
+    },
+    "skipButton": {
+      "position": "top-right",
+      "top": "{spacing.12}",
+      "right": "{spacing.6}",
+      "typography": "{typography.body2}",
+      "color": "{color.neutral.500}",
+      "padding": "{spacing.2} {spacing.3}",
+      "visibleOnSteps": [1, 2, 3],
+      "text": "건너뛰기"
+    },
+    "nextButton": {
+      "position": "bottom-center",
+      "bottom": "{spacing.10}",
+      "width": "calc(100% - {spacing.12})",
+      "variant": "primary",
+      "size": "lg",
+      "texts": {
+        "step1": "다음",
+        "step2": "다음",
+        "step3": "다음",
+        "step4": "시작하기"
+      },
+      "disabledOnStep4": "until status is selected"
+    }
+  },
+  "transitions": {
+    "between": "slide-left 300ms ease",
+    "contentEnter": "fade-in + slide-up 400ms ease (staggered 100ms)"
+  },
+  "typography": {
+    "title": {
+      "style": "{typography.h2}",
+      "color": "{color.neutral.900}",
+      "textAlign": "center",
+      "marginBottom": "{spacing.3}"
+    },
+    "subtitle": {
+      "style": "{typography.body1}",
+      "color": "{color.neutral.500}",
+      "textAlign": "center",
+      "lineHeight": "1.6"
+    }
+  }
+}

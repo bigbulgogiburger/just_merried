@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: weddingmate
+  labels:
+    app.kubernetes.io/name: weddingmate
+    app.kubernetes.io/managed-by: kubectl

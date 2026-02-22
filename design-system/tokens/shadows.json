@@ -1,0 +1,42 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "shadow": {
+    "$type": "shadow",
+    "sm": {
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "2px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.05)"
+      }
+    },
+    "md": {
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "4px",
+        "blur": "6px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.07)"
+      }
+    },
+    "lg": {
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "10px",
+        "blur": "15px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.1)"
+      }
+    },
+    "xl": {
+      "$value": {
+        "offsetX": "0px",
+        "offsetY": "20px",
+        "blur": "25px",
+        "spread": "0px",
+        "color": "rgba(0, 0, 0, 0.1)"
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "component": "Button",
+  "description": "Primary interactive element for triggering actions",
+  "variants": {
+    "primary": {
+      "background": "{color.primary.500}",
+      "color": "#FFFFFF",
+      "border": "none",
+      "hover": {
+        "background": "{color.primary.600}"
+      },
+      "active": {
+        "background": "{color.primary.700}"
+      },
+      "disabled": {
+        "background": "{color.primary.200}",
+        "color": "#FFFFFF",
+        "opacity": 0.6
+      }
+    },
+    "secondary": {
+      "background": "{color.accent.400}",
+      "color": "#FFFFFF",
+      "border": "none",
+      "hover": {
+        "background": "{color.accent.500}"
+      },
+      "active": {
+        "background": "{color.accent.600}"
+      },
+      "disabled": {
+        "background": "{color.accent.200}",
+        "color": "#FFFFFF",
+        "opacity": 0.6
+      }
+    },
+    "outline": {
+      "background": "transparent",
+      "color": "{color.primary.500}",
+      "border": "1px solid {color.primary.500}",
+      "hover": {
+        "background": "{color.primary.50}"
+      },
+      "active": {
+        "background": "{color.primary.100}"
+      },
+      "disabled": {
+        "color": "{color.neutral.300}",
+        "border": "1px solid {color.neutral.200}",
+        "opacity": 0.6
+      }
+    },
+    "ghost": {
+      "background": "transparent",
+      "color": "{color.primary.500}",
+      "border": "none",
+      "hover": {
+        "background": "{color.primary.50}"
+      },
+      "active": {
+        "background": "{color.primary.100}"
+      },
+      "disabled": {
+        "color": "{color.neutral.300}",
+        "opacity": 0.6
+      }
+    },
+    "danger": {
+      "background": "{color.semantic.error}",
+      "color": "#FFFFFF",
+      "border": "none",
+      "hover": {
+        "background": "#D32F2F"
+      },
+      "active": {
+        "background": "#B71C1C"
+      },
+      "disabled": {
+        "background": "#FFCDD2",
+        "color": "#FFFFFF",
+        "opacity": 0.6
+      }
+    }
+  },
+  "sizes": {
+    "xs": {
+      "height": "28px",
+      "paddingX": "{spacing.2}",
+      "paddingY": "{spacing.1}",
+      "fontSize": "{typography.caption}",
+      "borderRadius": "{borderRadius.sm}",
+      "iconSize": "14px"
+    },
+    "sm": {
+      "height": "36px",
+      "paddingX": "{spacing.3}",
+      "paddingY": "{spacing.2}",
+      "fontSize": "{typography.body2}",
+      "borderRadius": "{borderRadius.md}",
+      "iconSize": "16px"
+    },
+    "md": {
+      "height": "44px",
+      "paddingX": "{spacing.4}",
+      "paddingY": "{spacing.3}",
+      "fontSize": "{typography.body1}",
+      "borderRadius": "{borderRadius.md}",
+      "iconSize": "20px"
+    },
+    "lg": {
+      "height": "52px",
+      "paddingX": "{spacing.6}",
+      "paddingY": "{spacing.4}",
+      "fontSize": "{typography.body1}",
+      "fontWeight": "{typography.fontWeight.semibold}",
+      "borderRadius": "{borderRadius.lg}",
+      "iconSize": "24px"
+    }
+  },
+  "states": {
+    "default": { "cursor": "pointer", "transition": "all 150ms ease" },
+    "hover": { "cursor": "pointer" },
+    "active": { "transform": "scale(0.98)" },
+    "disabled": { "cursor": "not-allowed", "pointerEvents": "none" },
+    "loading": {
+      "cursor": "wait",
+      "pointerEvents": "none",
+      "content": "spinner icon replacing text or prepended"
+    }
+  },
+  "slots": {
+    "iconLeft": { "optional": true, "gap": "{spacing.2}" },
+    "label": { "required": true },
+    "iconRight": { "optional": true, "gap": "{spacing.2}" }
+  },
+  "accessibility": {
+    "role": "button",
+    "ariaDisabled": "when disabled",
+    "ariaLabel": "when icon-only",
+    "focusRing": "2px solid {color.primary.500}, offset 2px"
+  }
+}

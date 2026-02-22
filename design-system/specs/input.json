@@ -1,0 +1,98 @@
+{
+  "component": "Input",
+  "description": "Text input field for user data entry",
+  "types": {
+    "text": { "inputType": "text" },
+    "email": { "inputType": "email", "keyboard": "email" },
+    "password": { "inputType": "password", "toggleVisibility": true },
+    "search": { "inputType": "search", "clearButton": true, "iconLeft": "search" },
+    "textarea": { "element": "textarea", "minRows": 3, "maxRows": 8, "resize": "vertical" }
+  },
+  "sizes": {
+    "sm": {
+      "height": "36px",
+      "paddingX": "{spacing.3}",
+      "paddingY": "{spacing.2}",
+      "fontSize": "{typography.body2}"
+    },
+    "md": {
+      "height": "44px",
+      "paddingX": "{spacing.4}",
+      "paddingY": "{spacing.3}",
+      "fontSize": "{typography.body1}"
+    },
+    "lg": {
+      "height": "52px",
+      "paddingX": "{spacing.4}",
+      "paddingY": "{spacing.4}",
+      "fontSize": "{typography.body1}"
+    }
+  },
+  "states": {
+    "default": {
+      "background": "#FFFFFF",
+      "border": "1px solid {color.neutral.200}",
+      "borderRadius": "{borderRadius.md}",
+      "color": "{color.neutral.900}",
+      "placeholderColor": "{color.neutral.400}"
+    },
+    "focus": {
+      "border": "1.5px solid {color.primary.500}",
+      "boxShadow": "0 0 0 3px {color.primary.100}",
+      "outline": "none"
+    },
+    "error": {
+      "border": "1.5px solid {color.semantic.error}",
+      "boxShadow": "0 0 0 3px rgba(244, 67, 54, 0.1)"
+    },
+    "disabled": {
+      "background": "{color.neutral.50}",
+      "border": "1px solid {color.neutral.100}",
+      "color": "{color.neutral.400}",
+      "cursor": "not-allowed"
+    }
+  },
+  "slots": {
+    "label": {
+      "position": "above",
+      "fontSize": "{typography.body2}",
+      "fontWeight": "{typography.fontWeight.medium}",
+      "color": "{color.neutral.700}",
+      "marginBottom": "{spacing.1}",
+      "required": false,
+      "requiredIndicator": "*"
+    },
+    "helperText": {
+      "position": "below",
+      "fontSize": "{typography.caption}",
+      "color": "{color.neutral.500}",
+      "marginTop": "{spacing.1}"
+    },
+    "errorText": {
+      "position": "below",
+      "fontSize": "{typography.caption}",
+      "color": "{color.semantic.error}",
+      "marginTop": "{spacing.1}",
+      "iconLeft": "error (12px)"
+    },
+    "iconLeft": {
+      "optional": true,
+      "size": "20px",
+      "color": "{color.neutral.400}",
+      "gap": "{spacing.2}"
+    },
+    "iconRight": {
+      "optional": true,
+      "size": "20px",
+      "color": "{color.neutral.400}",
+      "gap": "{spacing.2}"
+    }
+  },
+  "accessibility": {
+    "role": "textbox",
+    "ariaInvalid": "when error",
+    "ariaDescribedBy": "linked to helperText or errorText",
+    "ariaRequired": "when required",
+    "labelFor": "input id"
+  }
+}

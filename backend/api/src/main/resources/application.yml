@@ -1,0 +1,26 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: weddingmate-api
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  shutdown: graceful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    root: INFO
+    com.weddingmate: DEBUG
+    org.springframework.security: DEBUG

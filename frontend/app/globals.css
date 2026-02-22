@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colors */
+    --color-primary: #B76E79;
+    --color-primary-light: #D4A0A7;
+    --color-primary-dark: #8E4F58;
+    --color-secondary: #FFFFF0;
+    --color-accent: #DCAE96;
+    --color-background: #FFF9F5;
+    --color-surface: #FFFFFF;
+    --color-text-primary: #2D2D2D;
+    --color-text-secondary: #6B6B6B;
+    --color-text-muted: #9B9B9B;
+    --color-border: #E8E0DB;
+    --color-success: #4CAF50;
+    --color-warning: #FF9800;
+    --color-error: #F44336;
+    --color-info: #2196F3;
+
+    /* Typography */
+    --font-family: 'Pretendard', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+
+    /* Spacing */
+    --spacing-unit: 0.25rem;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+    /* Z-Index */
+    --z-dropdown: 50;
+    --z-sticky: 100;
+    --z-fixed: 200;
+    --z-modal-backdrop: 300;
+    --z-modal: 400;
+    --z-toast: 500;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+    min-height: 100dvh;
+  }
+}
+
+@layer components {
+  /* Wedding-specific utility classes */
+  .wedding-card {
+    @apply rounded-lg bg-surface p-4 shadow-sm border border-border;
+  }
+
+  .wedding-section {
+    @apply px-4 py-6 tablet:px-6 tablet:py-8 desktop:px-8 desktop:py-10;
+  }
+
+  .wedding-container {
+    @apply mx-auto w-full max-w-[1280px] px-4 tablet:px-6 desktop:px-8;
+  }
+
+  .wedding-gradient {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
+  }
+
+  .wedding-text-gradient {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .wedding-divider {
+    @apply h-px w-full bg-border;
+  }
+
+  .wedding-input-base {
+    @apply w-full rounded-md border border-border bg-surface px-3 py-2 text-sm text-text-primary
+      placeholder:text-text-muted
+      focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .wedding-label {
+    @apply text-sm font-medium text-text-primary;
+  }
+
+  .wedding-error-text {
+    @apply text-xs text-error;
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}

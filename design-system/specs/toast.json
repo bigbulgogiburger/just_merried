@@ -1,0 +1,95 @@
+{
+  "component": "Toast",
+  "description": "Temporary notification message that appears at the top or bottom of the screen",
+  "variants": {
+    "success": {
+      "background": "#E8F5E9",
+      "border": "1px solid {color.semantic.success}",
+      "iconColor": "{color.semantic.success}",
+      "icon": "check-circle",
+      "textColor": "#1B5E20"
+    },
+    "error": {
+      "background": "#FFEBEE",
+      "border": "1px solid {color.semantic.error}",
+      "iconColor": "{color.semantic.error}",
+      "icon": "error",
+      "textColor": "#B71C1C"
+    },
+    "warning": {
+      "background": "#FFF3E0",
+      "border": "1px solid {color.semantic.warning}",
+      "iconColor": "{color.semantic.warning}",
+      "icon": "warning",
+      "textColor": "#E65100"
+    },
+    "info": {
+      "background": "#E3F2FD",
+      "border": "1px solid {color.semantic.info}",
+      "iconColor": "{color.semantic.info}",
+      "icon": "info",
+      "textColor": "#0D47A1"
+    }
+  },
+  "style": {
+    "borderRadius": "{borderRadius.lg}",
+    "padding": "{spacing.3} {spacing.4}",
+    "minWidth": "280px",
+    "maxWidth": "480px",
+    "boxShadow": "{shadow.lg}",
+    "display": "flex",
+    "alignItems": "center",
+    "gap": "{spacing.3}"
+  },
+  "slots": {
+    "icon": {
+      "size": "20px",
+      "flexShrink": 0
+    },
+    "message": {
+      "typography": "{typography.body2}",
+      "fontWeight": "{typography.fontWeight.medium}",
+      "flex": 1
+    },
+    "action": {
+      "optional": true,
+      "typography": "{typography.body2}",
+      "fontWeight": "{typography.fontWeight.semibold}",
+      "color": "inherit",
+      "textDecoration": "underline",
+      "cursor": "pointer"
+    },
+    "closeButton": {
+      "optional": true,
+      "icon": "close",
+      "size": "16px",
+      "color": "inherit",
+      "opacity": 0.6,
+      "hoverOpacity": 1
+    }
+  },
+  "position": {
+    "mobile": "bottom-center, 16px from bottom (+ safe area)",
+    "desktop": "top-right, 24px from top and right"
+  },
+  "behavior": {
+    "duration": {
+      "default": "4000ms",
+      "withAction": "6000ms",
+      "persistent": "manual dismiss only"
+    },
+    "stackable": true,
+    "maxVisible": 3,
+    "stackGap": "{spacing.2}",
+    "dismissOnSwipe": true
+  },
+  "animation": {
+    "enter": "slide-in + fade-in 250ms ease",
+    "exit": "slide-out + fade-out 200ms ease"
+  },
+  "accessibility": {
+    "role": "status",
+    "ariaLive": "polite",
+    "ariaAtomic": true
+  }
+}

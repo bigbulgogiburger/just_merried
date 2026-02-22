@@ -1,0 +1,76 @@
+{
+  "component": "Badge",
+  "description": "Small status indicator or counter, often overlaid on another element",
+  "variants": {
+    "dot": {
+      "size": "8px",
+      "borderRadius": "{borderRadius.full}",
+      "background": "{color.semantic.error}",
+      "border": "2px solid #FFFFFF",
+      "content": "none"
+    },
+    "count": {
+      "minWidth": "20px",
+      "height": "20px",
+      "borderRadius": "{borderRadius.full}",
+      "background": "{color.semantic.error}",
+      "color": "#FFFFFF",
+      "fontSize": "{typography.overline}",
+      "fontWeight": "{typography.fontWeight.bold}",
+      "padding": "0 {spacing.1}",
+      "textAlign": "center",
+      "lineHeight": "20px",
+      "maxCount": "99+",
+      "border": "2px solid #FFFFFF"
+    },
+    "text": {
+      "height": "22px",
+      "borderRadius": "{borderRadius.full}",
+      "padding": "0 {spacing.2}",
+      "fontSize": "{typography.caption}",
+      "fontWeight": "{typography.fontWeight.medium}",
+      "lineHeight": "22px",
+      "colors": {
+        "primary": {
+          "background": "{color.primary.100}",
+          "color": "{color.primary.700}"
+        },
+        "success": {
+          "background": "#E8F5E9",
+          "color": "#1B5E20"
+        },
+        "warning": {
+          "background": "#FFF3E0",
+          "color": "#E65100"
+        },
+        "error": {
+          "background": "#FFEBEE",
+          "color": "#B71C1C"
+        },
+        "info": {
+          "background": "#E3F2FD",
+          "color": "#0D47A1"
+        },
+        "neutral": {
+          "background": "{color.neutral.100}",
+          "color": "{color.neutral.700}"
+        }
+      }
+    }
+  },
+  "position": {
+    "topRight": {
+      "top": "-4px",
+      "right": "-4px",
+      "position": "absolute"
+    }
+  },
+  "animation": {
+    "enter": "scale(0 -> 1) 200ms spring",
+    "countChange": "scale bounce 150ms"
+  },
+  "accessibility": {
+    "role": "status",
+    "ariaLabel": "count or status description"
+  }
+}

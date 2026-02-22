@@ -1,0 +1,95 @@
+{
+  "component": "Avatar",
+  "description": "Visual representation of a user with image, initials, or icon fallback",
+  "sizes": {
+    "xs": {
+      "width": "24px",
+      "height": "24px",
+      "fontSize": "{typography.overline}",
+      "iconSize": "14px"
+    },
+    "sm": {
+      "width": "32px",
+      "height": "32px",
+      "fontSize": "{typography.caption}",
+      "iconSize": "16px"
+    },
+    "md": {
+      "width": "40px",
+      "height": "40px",
+      "fontSize": "{typography.body2}",
+      "iconSize": "20px"
+    },
+    "lg": {
+      "width": "56px",
+      "height": "56px",
+      "fontSize": "{typography.h4}",
+      "iconSize": "24px"
+    },
+    "xl": {
+      "width": "80px",
+      "height": "80px",
+      "fontSize": "{typography.h2}",
+      "iconSize": "32px"
+    }
+  },
+  "style": {
+    "borderRadius": "{borderRadius.full}",
+    "overflow": "hidden",
+    "display": "flex",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "fallbackOrder": [
+    "image",
+    "initials",
+    "icon"
+  ],
+  "fallbacks": {
+    "image": {
+      "objectFit": "cover",
+      "width": "100%",
+      "height": "100%"
+    },
+    "initials": {
+      "background": "{color.primary.100}",
+      "color": "{color.primary.700}",
+      "fontWeight": "{typography.fontWeight.semibold}",
+      "textTransform": "uppercase",
+      "maxChars": 2
+    },
+    "icon": {
+      "background": "{color.neutral.100}",
+      "color": "{color.neutral.500}",
+      "icon": "user"
+    }
+  },
+  "border": {
+    "optional": true,
+    "width": "2px",
+    "color": "#FFFFFF",
+    "description": "Used in avatar groups for overlap separation"
+  },
+  "group": {
+    "overlap": "-8px margin-left (except first)",
+    "maxVisible": 5,
+    "overflow": "+N count badge"
+  },
+  "statusIndicator": {
+    "optional": true,
+    "position": "bottom-right",
+    "size": "25% of avatar size, min 8px",
+    "borderRadius": "{borderRadius.full}",
+    "border": "2px solid #FFFFFF",
+    "colors": {
+      "online": "{color.semantic.success}",
+      "offline": "{color.neutral.300}",
+      "busy": "{color.semantic.error}"
+    }
+  },
+  "accessibility": {
+    "role": "img",
+    "ariaLabel": "user name or description",
+    "altText": "image alt attribute when using image"
+  }
+}

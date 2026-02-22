@@ -1,0 +1,14 @@
+.git
+.gitignore
+.idea
+*.iml
+*.iws
+*.ipr
+build
+.gradle
+!gradle/wrapper
+README.md
+docker-compose.yml
+k8s/
+.env
+.env.*

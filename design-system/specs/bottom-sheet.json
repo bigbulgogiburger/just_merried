@@ -1,0 +1,66 @@
+{
+  "component": "BottomSheet",
+  "description": "Draggable panel that slides up from the bottom of the screen",
+  "style": {
+    "background": "#FFFFFF",
+    "borderRadius": "{borderRadius.xl} {borderRadius.xl} 0 0",
+    "boxShadow": "{shadow.xl}",
+    "overlay": {
+      "background": "{color.background.overlay}"
+    }
+  },
+  "handle": {
+    "width": "36px",
+    "height": "4px",
+    "borderRadius": "{borderRadius.full}",
+    "background": "{color.neutral.300}",
+    "marginTop": "{spacing.2}",
+    "marginBottom": "{spacing.4}",
+    "alignment": "center"
+  },
+  "snapPoints": {
+    "collapsed": "0%",
+    "peek": "30%",
+    "half": "50%",
+    "expanded": "90%"
+  },
+  "slots": {
+    "header": {
+      "optional": true,
+      "padding": "0 {spacing.4} {spacing.3}",
+      "title": {
+        "typography": "{typography.h4}",
+        "color": "{color.neutral.900}"
+      }
+    },
+    "body": {
+      "required": true,
+      "padding": "0 {spacing.4} {spacing.4}",
+      "overflow": "auto"
+    },
+    "footer": {
+      "optional": true,
+      "padding": "{spacing.3} {spacing.4}",
+      "borderTop": "1px solid {color.neutral.100}",
+      "safeAreaBottom": true
+    }
+  },
+  "behavior": {
+    "draggable": true,
+    "swipeToClose": true,
+    "closeOnOverlayClick": true,
+    "preventBodyScroll": true,
+    "velocityThreshold": "500px/s for snap"
+  },
+  "animation": {
+    "enter": "slide-up 300ms cubic-bezier(0.32, 0.72, 0, 1)",
+    "exit": "slide-down 250ms cubic-bezier(0.32, 0.72, 0, 1)",
+    "snap": "spring animation 300ms"
+  },
+  "accessibility": {
+    "role": "dialog",
+    "ariaModal": true,
+    "ariaLabel": "bottom sheet title",
+    "handleAriaLabel": "Drag handle"
+  }
+}

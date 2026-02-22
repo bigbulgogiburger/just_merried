@@ -1,0 +1,297 @@
+{
+  "screen": "HomeMarriedLife",
+  "description": "Home dashboard for users in married life phase (신혼부부/기혼)",
+  "layout": {
+    "background": "{color.background.primary}",
+    "scrollable": true,
+    "paddingTop": "{spacing.12}",
+    "paddingBottom": "calc(56px + {spacing.6} + env(safe-area-inset-bottom))"
+  },
+  "sections": [
+    {
+      "id": "header",
+      "layout": {
+        "padding": "{spacing.4} {spacing.6}",
+        "display": "flex",
+        "justifyContent": "space-between",
+        "alignItems": "center"
+      },
+      "elements": {
+        "greeting": {
+          "text": "{userName}님, 안녕하세요!",
+          "typography": "{typography.h3}",
+          "color": "{color.neutral.900}"
+        },
+        "actions": {
+          "display": "flex",
+          "gap": "{spacing.3}",
+          "items": [
+            { "icon": "notification", "size": "24px", "badge": "dot when unread" },
+            { "icon": "settings", "size": "24px" }
+          ]
+        }
+      }
+    },
+    {
+      "id": "anniversary-dday",
+      "layout": {
+        "padding": "0 {spacing.6}",
+        "marginBottom": "{spacing.6}"
+      },
+      "card": {
+        "variant": "elevated",
+        "borderRadius": "{borderRadius.xl}",
+        "padding": "{spacing.5}",
+        "background": "linear-gradient(135deg, {color.accent.400}, {color.primary.300})",
+        "color": "#FFFFFF"
+      },
+      "elements": {
+        "graphic": {
+          "type": "heart-calendar",
+          "description": "Calendar icon with heart accent",
+          "size": "48px",
+          "position": "left"
+        },
+        "content": {
+          "display": "flex",
+          "flexDirection": "column",
+          "gap": "{spacing.1}"
+        },
+        "nextEvent": {
+          "label": {
+            "text": "다가오는 기념일",
+            "typography": "{typography.caption}",
+            "color": "rgba(255, 255, 255, 0.8)"
+          },
+          "name": {
+            "text": "{anniversaryName}",
+            "typography": "{typography.h4}",
+            "color": "#FFFFFF"
+          },
+          "countdown": {
+            "text": "D-{days}",
+            "typography": "{typography.h2}",
+            "color": "#FFFFFF",
+            "fontWeight": "{typography.fontWeight.bold}"
+          },
+          "date": {
+            "text": "{anniversaryDate}",
+            "typography": "{typography.caption}",
+            "color": "rgba(255, 255, 255, 0.7)"
+          }
+        },
+        "marriageDuration": {
+          "text": "결혼 {years}년 {months}개월째",
+          "typography": "{typography.caption}",
+          "color": "rgba(255, 255, 255, 0.85)",
+          "marginTop": "{spacing.2}"
+        }
+      }
+    },
+    {
+      "id": "family-calendar",
+      "layout": {
+        "padding": "0 {spacing.6}",
+        "marginBottom": "{spacing.6}"
+      },
+      "card": {
+        "variant": "elevated",
+        "borderRadius": "{borderRadius.xl}",
+        "padding": "{spacing.5}"
+      },
+      "elements": {
+        "header": {
+          "display": "flex",
+          "justifyContent": "space-between",
+          "alignItems": "center",
+          "marginBottom": "{spacing.4}",
+          "title": {
+            "text": "가족 캘린더",
+            "typography": "{typography.h4}",
+            "color": "{color.neutral.900}"
+          },
+          "viewAll": {
+            "text": "전체보기",
+            "typography": "{typography.body2}",
+            "color": "{color.primary.500}"
+          }
+        },
+        "weekView": {
+          "display": "flex",
+          "justifyContent": "space-between",
+          "marginBottom": "{spacing.3}",
+          "dayCell": {
+            "width": "40px",
+            "height": "52px",
+            "display": "flex",
+            "flexDirection": "column",
+            "alignItems": "center",
+            "gap": "4px",
+            "borderRadius": "{borderRadius.md}",
+            "dayOfWeek": {
+              "typography": "{typography.caption}",
+              "color": "{color.neutral.400}"
+            },
+            "date": {
+              "typography": "{typography.body2}",
+              "color": "{color.neutral.900}"
+            },
+            "today": {
+              "background": "{color.primary.500}",
+              "dateColor": "#FFFFFF",
+              "borderRadius": "{borderRadius.md}"
+            },
+            "hasEvent": {
+              "dot": {
+                "size": "4px",
+                "color": "{color.primary.400}",
+                "borderRadius": "{borderRadius.full}"
+              }
+            }
+          }
+        },
+        "upcomingEvents": {
+          "maxItems": 2,
+          "gap": "{spacing.2}",
+          "item": {
+            "display": "flex",
+            "alignItems": "center",
+            "gap": "{spacing.3}",
+            "padding": "{spacing.2} 0",
+            "colorBar": {
+              "width": "3px",
+              "height": "100%",
+              "borderRadius": "{borderRadius.full}"
+            },
+            "time": {
+              "typography": "{typography.caption}",
+              "color": "{color.neutral.500}"
+            },
+            "title": {
+              "typography": "{typography.body2}",
+              "color": "{color.neutral.900}"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "shared-todo",
+      "layout": {
+        "padding": "0 {spacing.6}",
+        "marginBottom": "{spacing.6}"
+      },
+      "card": {
+        "variant": "elevated",
+        "borderRadius": "{borderRadius.xl}",
+        "padding": "{spacing.5}"
+      },
+      "elements": {
+        "header": {
+          "display": "flex",
+          "justifyContent": "space-between",
+          "alignItems": "center",
+          "marginBottom": "{spacing.3}",
+          "title": {
+            "text": "공유 할 일",
+            "typography": "{typography.h4}",
+            "color": "{color.neutral.900}"
+          },
+          "addButton": {
+            "icon": "plus",
+            "size": "20px",
+            "color": "{color.primary.500}",
+            "padding": "{spacing.1}",
+            "borderRadius": "{borderRadius.full}",
+            "background": "{color.primary.50}"
+          }
+        },
+        "list": {
+          "maxItems": 4,
+          "gap": "{spacing.2}",
+          "item": {
+            "display": "flex",
+            "alignItems": "center",
+            "gap": "{spacing.3}",
+            "padding": "{spacing.2} 0",
+            "checkbox": {
+              "size": "20px",
+              "borderRadius": "{borderRadius.full}",
+              "border": "2px solid {color.neutral.300}",
+              "checkedBackground": "{color.primary.500}",
+              "checkedIcon": "check (white, 12px)"
+            },
+            "text": {
+              "typography": "{typography.body2}",
+              "color": "{color.neutral.900}",
+              "flex": 1
+            },
+            "assignee": {
+              "avatar": {
+                "size": "xs",
+                "marginLeft": "auto"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "community-feed",
+      "layout": {
+        "padding": "0 {spacing.6}",
+        "marginBottom": "{spacing.6}"
+      },
+      "header": {
+        "display": "flex",
+        "justifyContent": "space-between",
+        "alignItems": "center",
+        "marginBottom": "{spacing.3}",
+        "title": {
+          "text": "커뮤니티",
+          "typography": "{typography.h4}",
+          "color": "{color.neutral.900}"
+        },
+        "viewAll": {
+          "text": "더보기",
+          "typography": "{typography.body2}",
+          "color": "{color.primary.500}"
+        }
+      },
+      "feedCards": {
+        "display": "flex",
+        "overflow": "scroll-x",
+        "gap": "{spacing.3}",
+        "paddingBottom": "{spacing.1}",
+        "card": {
+          "width": "240px",
+          "flexShrink": 0,
+          "variant": "outlined",
+          "borderRadius": "{borderRadius.lg}",
+          "padding": "{spacing.4}",
+          "elements": {
+            "category": {
+              "typography": "{typography.overline}",
+              "color": "{color.primary.500}",
+              "marginBottom": "{spacing.1}"
+            },
+            "title": {
+              "typography": "{typography.body2}",
+              "fontWeight": "{typography.fontWeight.medium}",
+              "color": "{color.neutral.900}",
+              "maxLines": 2,
+              "marginBottom": "{spacing.2}"
+            },
+            "meta": {
+              "display": "flex",
+              "gap": "{spacing.2}",
+              "typography": "{typography.caption}",
+              "color": "{color.neutral.400}",
+              "items": ["author", "time", "hearts count"]
+            }
+          }
+        }
+      }
+    }
+  ]
+}

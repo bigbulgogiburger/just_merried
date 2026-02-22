@@ -1,0 +1,110 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "typography": {
+    "fontFamily": {
+      "$type": "fontFamily",
+      "primary": { "$value": "Pretendard", "$description": "Korean-optimized sans-serif" },
+      "fallback": { "$value": "'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" }
+    },
+    "fontWeight": {
+      "$type": "fontWeight",
+      "regular": { "$value": 400 },
+      "medium": { "$value": 500 },
+      "semibold": { "$value": 600 },
+      "bold": { "$value": 700 }
+    },
+    "scale": {
+      "display": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "36px",
+          "lineHeight": "44px",
+          "fontWeight": 700,
+          "letterSpacing": "-0.02em"
+        }
+      },
+      "h1": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "28px",
+          "lineHeight": "36px",
+          "fontWeight": 700,
+          "letterSpacing": "-0.01em"
+        }
+      },
+      "h2": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "24px",
+          "lineHeight": "32px",
+          "fontWeight": 600,
+          "letterSpacing": "-0.01em"
+        }
+      },
+      "h3": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "20px",
+          "lineHeight": "28px",
+          "fontWeight": 600,
+          "letterSpacing": "0"
+        }
+      },
+      "h4": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "18px",
+          "lineHeight": "26px",
+          "fontWeight": 500,
+          "letterSpacing": "0"
+        }
+      },
+      "body1": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "16px",
+          "lineHeight": "24px",
+          "fontWeight": 400,
+          "letterSpacing": "0"
+        }
+      },
+      "body2": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "14px",
+          "lineHeight": "22px",
+          "fontWeight": 400,
+          "letterSpacing": "0"
+        }
+      },
+      "caption": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "12px",
+          "lineHeight": "18px",
+          "fontWeight": 400,
+          "letterSpacing": "0.01em"
+        }
+      },
+      "overline": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "10px",
+          "lineHeight": "14px",
+          "fontWeight": 500,
+          "letterSpacing": "0.05em",
+          "textTransform": "uppercase"
+        }
+      }
+    }
+  }
+}

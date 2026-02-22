@@ -1,0 +1,92 @@
+{
+  "iconSystem": {
+    "baseSize": "24x24",
+    "stroke": "1.5px",
+    "strokeCap": "round",
+    "strokeJoin": "round",
+    "padding": "2px",
+    "viewBox": "0 0 24 24",
+    "fill": "none"
+  },
+  "categories": {
+    "navigation": {
+      "description": "Main tab bar and page navigation icons",
+      "icons": [
+        { "name": "home", "description": "Home tab", "variants": ["outline", "filled"] },
+        { "name": "wedding-prep", "description": "Wedding preparation tab", "variants": ["outline", "filled"] },
+        { "name": "community", "description": "Community tab", "variants": ["outline", "filled"] },
+        { "name": "market", "description": "Marketplace tab", "variants": ["outline", "filled"] },
+        { "name": "my-page", "description": "My page / profile tab", "variants": ["outline", "filled"] }
+      ]
+    },
+    "actions": {
+      "description": "User action triggers",
+      "icons": [
+        { "name": "search", "description": "Search / magnifying glass" },
+        { "name": "filter", "description": "Filter / funnel" },
+        { "name": "sort", "description": "Sort / reorder" },
+        { "name": "share", "description": "Share content" },
+        { "name": "bookmark", "description": "Save / bookmark", "variants": ["outline", "filled"] },
+        { "name": "heart", "description": "Like / favorite", "variants": ["outline", "filled"] },
+        { "name": "comment", "description": "Comment / chat bubble" },
+        { "name": "send", "description": "Send message / submit" }
+      ]
+    },
+    "status": {
+      "description": "Feedback and status indicators",
+      "icons": [
+        { "name": "check", "description": "Success / complete" },
+        { "name": "check-circle", "description": "Circled checkmark" },
+        { "name": "close", "description": "Close / dismiss" },
+        { "name": "warning", "description": "Warning triangle" },
+        { "name": "info", "description": "Information circle" },
+        { "name": "error", "description": "Error / alert circle" }
+      ]
+    },
+    "ui": {
+      "description": "General UI elements",
+      "icons": [
+        { "name": "arrow-left", "description": "Navigate back" },
+        { "name": "arrow-right", "description": "Navigate forward" },
+        { "name": "chevron-down", "description": "Expand / dropdown" },
+        { "name": "chevron-up", "description": "Collapse" },
+        { "name": "chevron-left", "description": "Previous" },
+        { "name": "chevron-right", "description": "Next" },
+        { "name": "menu", "description": "Hamburger menu" },
+        { "name": "more", "description": "More options (3 dots)" },
+        { "name": "more-vertical", "description": "More options vertical" },
+        { "name": "plus", "description": "Add / create" },
+        { "name": "minus", "description": "Remove / subtract" },
+        { "name": "edit", "description": "Edit / pencil" },
+        { "name": "delete", "description": "Delete / trash" },
+        { "name": "camera", "description": "Camera / take photo" },
+        { "name": "image", "description": "Image / gallery" },
+        { "name": "calendar", "description": "Date picker" },
+        { "name": "clock", "description": "Time" },
+        { "name": "location", "description": "Map pin / location" },
+        { "name": "phone", "description": "Phone call" },
+        { "name": "link", "description": "URL / external link" },
+        { "name": "copy", "description": "Copy to clipboard" },
+        { "name": "settings", "description": "Settings gear" },
+        { "name": "notification", "description": "Bell / notifications", "variants": ["outline", "filled"] },
+        { "name": "eye", "description": "Visibility on" },
+        { "name": "eye-off", "description": "Visibility off" }
+      ]
+    },
+    "wedding": {
+      "description": "Wedding-specific custom icons",
+      "icons": [
+        { "name": "ring", "description": "Wedding ring" },
+        { "name": "couple", "description": "Couple / bride & groom" },
+        { "name": "cake", "description": "Wedding cake" },
+        { "name": "bouquet", "description": "Flower bouquet" },
+        { "name": "dress", "description": "Wedding dress" },
+        { "name": "venue", "description": "Wedding venue" },
+        { "name": "invitation", "description": "Wedding invitation card" },
+        { "name": "checklist", "description": "Wedding checklist" },
+        { "name": "budget", "description": "Budget / wallet" },
+        { "name": "guest", "description": "Guest / person" }
+      ]
+    }
+  }
+}

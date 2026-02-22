@@ -1,0 +1,76 @@
+{
+  "screen": "Splash",
+  "description": "App launch screen shown while the app initializes",
+  "layout": {
+    "background": {
+      "type": "gradient",
+      "direction": "top-to-bottom",
+      "colors": ["{color.background.primary}", "{color.primary.50}"],
+      "stops": ["0%", "100%"]
+    },
+    "display": "flex",
+    "flexDirection": "column",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "width": "100%",
+    "height": "100%"
+  },
+  "elements": {
+    "logo": {
+      "position": "center",
+      "width": "120px",
+      "height": "120px",
+      "description": "WeddingMate logo mark (ring or heart motif)"
+    },
+    "appName": {
+      "text": "WeddingMate",
+      "typography": "{typography.h1}",
+      "color": "{color.primary.500}",
+      "marginTop": "{spacing.4}",
+      "letterSpacing": "0.02em"
+    },
+    "tagline": {
+      "text": "결혼의 모든 순간",
+      "typography": "{typography.body2}",
+      "color": "{color.neutral.500}",
+      "marginTop": "{spacing.2}"
+    }
+  },
+  "animation": {
+    "sequence": [
+      {
+        "step": 1,
+        "target": "logo",
+        "type": "fade-in + scale",
+        "from": { "opacity": 0, "scale": 0.8 },
+        "to": { "opacity": 1, "scale": 1 },
+        "duration": "600ms",
+        "easing": "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        "delay": "200ms"
+      },
+      {
+        "step": 2,
+        "target": "appName",
+        "type": "fade-in + slide-up",
+        "from": { "opacity": 0, "translateY": "10px" },
+        "to": { "opacity": 1, "translateY": "0" },
+        "duration": "400ms",
+        "easing": "ease-out",
+        "delay": "600ms"
+      },
+      {
+        "step": 3,
+        "target": "tagline",
+        "type": "fade-in",
+        "from": { "opacity": 0 },
+        "to": { "opacity": 1 },
+        "duration": "400ms",
+        "easing": "ease-out",
+        "delay": "800ms"
+      }
+    ],
+    "totalDuration": "1200ms",
+    "minimumDisplay": "2000ms",
+    "exitTransition": "fade-out 300ms ease"
+  }
+}

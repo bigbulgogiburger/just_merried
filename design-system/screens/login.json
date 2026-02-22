@@ -1,0 +1,183 @@
+{
+  "screen": "Login",
+  "description": "Social login screen with provider buttons and legal links",
+  "layout": {
+    "background": "{color.background.primary}",
+    "display": "flex",
+    "flexDirection": "column",
+    "alignItems": "center",
+    "justifyContent": "space-between",
+    "height": "100%",
+    "padding": "{spacing.6}"
+  },
+  "sections": {
+    "header": {
+      "position": "top",
+      "marginTop": "20%",
+      "alignItems": "center",
+      "elements": {
+        "logo": {
+          "width": "80px",
+          "height": "80px",
+          "marginBottom": "{spacing.4}",
+          "description": "WeddingMate logo mark"
+        },
+        "appName": {
+          "text": "WeddingMate",
+          "typography": "{typography.h2}",
+          "color": "{color.primary.500}",
+          "marginBottom": "{spacing.2}"
+        },
+        "tagline": {
+          "text": "결혼의 모든 순간, 함께",
+          "typography": "{typography.body1}",
+          "color": "{color.neutral.500}"
+        }
+      }
+    },
+    "socialButtons": {
+      "position": "center-bottom",
+      "marginBottom": "{spacing.10}",
+      "width": "100%",
+      "maxWidth": "340px",
+      "gap": "{spacing.3}",
+      "buttons": [
+        {
+          "provider": "kakao",
+          "text": "카카오로 시작하기",
+          "style": {
+            "background": "{color.social.kakao}",
+            "color": "#191919",
+            "height": "52px",
+            "borderRadius": "{borderRadius.lg}",
+            "border": "none",
+            "fontSize": "{typography.body1}",
+            "fontWeight": "{typography.fontWeight.medium}",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "{spacing.2}",
+            "width": "100%"
+          },
+          "icon": {
+            "name": "kakao-logo",
+            "size": "20px",
+            "description": "Kakao speech bubble icon"
+          }
+        },
+        {
+          "provider": "naver",
+          "text": "네이버로 시작하기",
+          "style": {
+            "background": "{color.social.naver}",
+            "color": "#FFFFFF",
+            "height": "52px",
+            "borderRadius": "{borderRadius.lg}",
+            "border": "none",
+            "fontSize": "{typography.body1}",
+            "fontWeight": "{typography.fontWeight.medium}",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "{spacing.2}",
+            "width": "100%"
+          },
+          "icon": {
+            "name": "naver-logo",
+            "size": "20px",
+            "description": "Naver N icon"
+          }
+        },
+        {
+          "provider": "google",
+          "text": "Google로 시작하기",
+          "style": {
+            "background": "{color.social.google}",
+            "color": "{color.neutral.900}",
+            "height": "52px",
+            "borderRadius": "{borderRadius.lg}",
+            "border": "1px solid {color.neutral.200}",
+            "fontSize": "{typography.body1}",
+            "fontWeight": "{typography.fontWeight.medium}",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "{spacing.2}",
+            "width": "100%"
+          },
+          "icon": {
+            "name": "google-logo",
+            "size": "20px",
+            "description": "Google G multicolor icon"
+          }
+        },
+        {
+          "provider": "apple",
+          "text": "Apple로 시작하기",
+          "style": {
+            "background": "{color.social.apple}",
+            "color": "#FFFFFF",
+            "height": "52px",
+            "borderRadius": "{borderRadius.lg}",
+            "border": "none",
+            "fontSize": "{typography.body1}",
+            "fontWeight": "{typography.fontWeight.medium}",
+            "display": "flex",
+            "alignItems": "center",
+            "justifyContent": "center",
+            "gap": "{spacing.2}",
+            "width": "100%"
+          },
+          "icon": {
+            "name": "apple-logo",
+            "size": "20px",
+            "description": "Apple  icon"
+          }
+        }
+      ]
+    },
+    "footer": {
+      "position": "bottom",
+      "marginBottom": "{spacing.8}",
+      "alignItems": "center",
+      "elements": {
+        "termsText": {
+          "text": "로그인 시 아래 약관에 동의하게 됩니다",
+          "typography": "{typography.caption}",
+          "color": "{color.neutral.400}",
+          "marginBottom": "{spacing.2}"
+        },
+        "termsLinks": {
+          "display": "flex",
+          "gap": "{spacing.3}",
+          "alignItems": "center",
+          "links": [
+            {
+              "text": "이용약관",
+              "typography": "{typography.caption}",
+              "color": "{color.neutral.500}",
+              "textDecoration": "underline",
+              "action": "navigate to terms of service"
+            },
+            {
+              "separator": "|",
+              "color": "{color.neutral.300}"
+            },
+            {
+              "text": "개인정보처리방침",
+              "typography": "{typography.caption}",
+              "color": "{color.neutral.500}",
+              "textDecoration": "underline",
+              "action": "navigate to privacy policy"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "animation": {
+    "header": "fade-in + slide-down 400ms ease, delay 200ms",
+    "buttons": "fade-in + slide-up, staggered 100ms each, delay 400ms",
+    "footer": "fade-in 300ms ease, delay 800ms"
+  }
+}

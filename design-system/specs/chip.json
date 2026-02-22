@@ -1,0 +1,88 @@
+{
+  "component": "Chip",
+  "description": "Compact interactive element for selection, filtering, or tags",
+  "variants": {
+    "selectable": {
+      "unselected": {
+        "background": "#FFFFFF",
+        "border": "1px solid {color.neutral.200}",
+        "color": "{color.neutral.700}"
+      },
+      "selected": {
+        "background": "{color.primary.50}",
+        "border": "1px solid {color.primary.500}",
+        "color": "{color.primary.700}"
+      },
+      "hover": {
+        "unselected": {
+          "background": "{color.neutral.50}",
+          "border": "1px solid {color.neutral.300}"
+        },
+        "selected": {
+          "background": "{color.primary.100}"
+        }
+      },
+      "disabled": {
+        "background": "{color.neutral.50}",
+        "border": "1px solid {color.neutral.100}",
+        "color": "{color.neutral.300}",
+        "cursor": "not-allowed"
+      }
+    },
+    "dismissible": {
+      "background": "{color.primary.50}",
+      "border": "1px solid {color.primary.200}",
+      "color": "{color.primary.700}",
+      "closeIcon": {
+        "icon": "close",
+        "size": "14px",
+        "color": "{color.primary.400}",
+        "hoverColor": "{color.primary.600}"
+      }
+    }
+  },
+  "sizes": {
+    "sm": {
+      "height": "28px",
+      "paddingX": "{spacing.2}",
+      "fontSize": "{typography.caption}",
+      "borderRadius": "{borderRadius.full}",
+      "gap": "{spacing.1}"
+    },
+    "md": {
+      "height": "34px",
+      "paddingX": "{spacing.3}",
+      "fontSize": "{typography.body2}",
+      "borderRadius": "{borderRadius.full}",
+      "gap": "{spacing.2}"
+    }
+  },
+  "slots": {
+    "iconLeft": {
+      "optional": true,
+      "size": "16px"
+    },
+    "label": {
+      "required": true,
+      "fontWeight": "{typography.fontWeight.medium}"
+    },
+    "closeButton": {
+      "optional": true,
+      "variant": "dismissible only"
+    }
+  },
+  "animation": {
+    "select": "background-color 150ms ease",
+    "dismiss": "scale(1 -> 0) + fade-out 200ms ease"
+  },
+  "accessibility": {
+    "selectable": {
+      "role": "checkbox or radio (depending on single/multi select)",
+      "ariaChecked": "when selected"
+    },
+    "dismissible": {
+      "role": "button",
+      "ariaLabel": "Remove {label}"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "component": "Modal",
+  "description": "Dialog overlay for focused user interactions",
+  "sizes": {
+    "sm": {
+      "width": "320px",
+      "maxHeight": "80vh"
+    },
+    "md": {
+      "width": "480px",
+      "maxHeight": "80vh"
+    },
+    "lg": {
+      "width": "640px",
+      "maxHeight": "85vh"
+    },
+    "fullscreen": {
+      "width": "100vw",
+      "height": "100vh",
+      "borderRadius": "0"
+    }
+  },
+  "style": {
+    "background": "#FFFFFF",
+    "borderRadius": "{borderRadius.xl}",
+    "boxShadow": "{shadow.xl}",
+    "overlay": {
+      "background": "{color.background.overlay}",
+      "backdropFilter": "blur(4px)"
+    }
+  },
+  "slots": {
+    "header": {
+      "optional": false,
+      "padding": "{spacing.4} {spacing.6}",
+      "borderBottom": "1px solid {color.neutral.100}",
+      "title": {
+        "typography": "{typography.h3}",
+        "color": "{color.neutral.900}"
+      },
+      "closeButton": {
+        "position": "top-right",
+        "icon": "close",
+        "size": "24px",
+        "color": "{color.neutral.500}",
+        "hoverColor": "{color.neutral.700}"
+      }
+    },
+    "body": {
+      "required": true,
+      "padding": "{spacing.6}",
+      "overflow": "auto",
+      "typography": "{typography.body1}",
+      "color": "{color.neutral.700}"
+    },
+    "footer": {
+      "optional": true,
+      "padding": "{spacing.4} {spacing.6}",
+      "borderTop": "1px solid {color.neutral.100}",
+      "display": "flex",
+      "justifyContent": "flex-end",
+      "gap": "{spacing.3}",
+      "buttons": {
+        "cancel": "ghost or outline variant",
+        "confirm": "primary variant"
+      }
+    }
+  },
+  "animation": {
+    "enter": {
+      "overlay": "fade-in 200ms ease",
+      "content": "fade-in + scale(0.95 -> 1) 250ms ease"
+    },
+    "exit": {
+      "overlay": "fade-out 150ms ease",
+      "content": "fade-out + scale(1 -> 0.95) 150ms ease"
+    }
+  },
+  "behavior": {
+    "closeOnOverlayClick": true,
+    "closeOnEscape": true,
+    "trapFocus": true,
+    "preventBodyScroll": true,
+    "returnFocusOnClose": true
+  },
+  "accessibility": {
+    "role": "dialog",
+    "ariaModal": true,
+    "ariaLabelledBy": "header title id",
+    "ariaDescribedBy": "body content id"
+  }
+}

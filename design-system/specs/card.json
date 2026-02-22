@@ -1,0 +1,73 @@
+{
+  "component": "Card",
+  "description": "Container for grouping related content",
+  "variants": {
+    "elevated": {
+      "background": "#FFFFFF",
+      "border": "none",
+      "boxShadow": "{shadow.md}",
+      "borderRadius": "{borderRadius.lg}",
+      "hover": {
+        "boxShadow": "{shadow.lg}",
+        "transform": "translateY(-2px)",
+        "transition": "all 200ms ease"
+      }
+    },
+    "outlined": {
+      "background": "#FFFFFF",
+      "border": "1px solid {color.neutral.200}",
+      "boxShadow": "none",
+      "borderRadius": "{borderRadius.lg}",
+      "hover": {
+        "border": "1px solid {color.neutral.300}",
+        "boxShadow": "{shadow.sm}"
+      }
+    }
+  },
+  "padding": {
+    "sm": "{spacing.3}",
+    "md": "{spacing.4}",
+    "lg": "{spacing.6}"
+  },
+  "slots": {
+    "image": {
+      "optional": true,
+      "position": "top",
+      "borderRadius": "{borderRadius.lg} {borderRadius.lg} 0 0",
+      "aspectRatio": "16/9",
+      "objectFit": "cover"
+    },
+    "header": {
+      "optional": true,
+      "padding": "{spacing.4}",
+      "borderBottom": "1px solid {color.neutral.100}",
+      "title": {
+        "typography": "{typography.h4}",
+        "color": "{color.neutral.900}"
+      },
+      "subtitle": {
+        "typography": "{typography.body2}",
+        "color": "{color.neutral.500}",
+        "marginTop": "{spacing.1}"
+      }
+    },
+    "body": {
+      "required": true,
+      "padding": "{spacing.4}",
+      "typography": "{typography.body1}",
+      "color": "{color.neutral.700}"
+    },
+    "actions": {
+      "optional": true,
+      "padding": "{spacing.3} {spacing.4}",
+      "borderTop": "1px solid {color.neutral.100}",
+      "display": "flex",
+      "justifyContent": "flex-end",
+      "gap": "{spacing.2}"
+    }
+  },
+  "accessibility": {
+    "role": "article or region",
+    "ariaLabel": "descriptive card title"
+  }
+}

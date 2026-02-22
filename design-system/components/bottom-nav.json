@@ -1,0 +1,130 @@
+{
+  "component": "BottomNavigation",
+  "description": "Persistent bottom tab bar for main app navigation",
+  "layout": {
+    "position": "fixed",
+    "bottom": "0",
+    "left": "0",
+    "right": "0",
+    "height": "56px",
+    "paddingBottom": "env(safe-area-inset-bottom)",
+    "background": "#FFFFFF",
+    "borderTop": "1px solid {color.neutral.100}",
+    "display": "flex",
+    "alignItems": "center",
+    "justifyContent": "space-around",
+    "zIndex": 100
+  },
+  "tabs": [
+    {
+      "id": "home",
+      "label": "홈",
+      "icon": "home",
+      "iconFilled": "home-filled",
+      "route": "/"
+    },
+    {
+      "id": "wedding-prep",
+      "label": "결혼준비",
+      "icon": "wedding-prep",
+      "iconFilled": "wedding-prep-filled",
+      "route": "/wedding-prep"
+    },
+    {
+      "id": "community",
+      "label": "커뮤니티",
+      "icon": "community",
+      "iconFilled": "community-filled",
+      "route": "/community"
+    },
+    {
+      "id": "market",
+      "label": "마켓",
+      "icon": "market",
+      "iconFilled": "market-filled",
+      "route": "/market"
+    },
+    {
+      "id": "my-page",
+      "label": "MY",
+      "icon": "my-page",
+      "iconFilled": "my-page-filled",
+      "route": "/my"
+    }
+  ],
+  "tabItem": {
+    "display": "flex",
+    "flexDirection": "column",
+    "alignItems": "center",
+    "justifyContent": "center",
+    "gap": "2px",
+    "flex": 1,
+    "height": "100%",
+    "cursor": "pointer",
+    "position": "relative",
+    "transition": "color 200ms ease"
+  },
+  "states": {
+    "unselected": {
+      "icon": {
+        "variant": "outline",
+        "size": "24px",
+        "color": "{color.neutral.400}"
+      },
+      "label": {
+        "fontSize": "10px",
+        "fontWeight": "{typography.fontWeight.regular}",
+        "color": "{color.neutral.400}"
+      }
+    },
+    "selected": {
+      "icon": {
+        "variant": "filled",
+        "size": "24px",
+        "color": "{color.primary.500}"
+      },
+      "label": {
+        "fontSize": "10px",
+        "fontWeight": "{typography.fontWeight.medium}",
+        "color": "{color.primary.500}"
+      }
+    }
+  },
+  "notificationBadge": {
+    "position": "absolute",
+    "top": "2px",
+    "right": "50%",
+    "transform": "translateX(12px)",
+    "variants": {
+      "dot": {
+        "width": "6px",
+        "height": "6px",
+        "borderRadius": "{borderRadius.full}",
+        "background": "{color.semantic.error}",
+        "border": "1.5px solid #FFFFFF"
+      },
+      "count": {
+        "minWidth": "16px",
+        "height": "16px",
+        "borderRadius": "{borderRadius.full}",
+        "background": "{color.semantic.error}",
+        "color": "#FFFFFF",
+        "fontSize": "9px",
+        "fontWeight": "{typography.fontWeight.bold}",
+        "textAlign": "center",
+        "lineHeight": "16px",
+        "padding": "0 4px",
+        "border": "1.5px solid #FFFFFF",
+        "maxCount": "99+"
+      }
+    }
+  },
+  "accessibility": {
+    "role": "navigation",
+    "ariaLabel": "Main navigation",
+    "tabRole": "tab",
+    "tabListRole": "tablist",
+    "ariaSelected": "for active tab",
+    "ariaCurrent": "page"
+  }
+}
