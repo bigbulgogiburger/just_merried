@@ -79,4 +79,8 @@ public class User extends BaseTimeEntity {
         this.weddingStatus = weddingStatus;
         this.weddingDate = weddingDate;
     }
+
+    public void promoteToVendor() {
+        this.role = UserRole.VENDOR;
+    }
 }
