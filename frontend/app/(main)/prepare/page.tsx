@@ -42,6 +42,20 @@ export default function PreparePage() {
   const [newChecklistDesc, setNewChecklistDesc] = useState('');
   const [newItemTitle, setNewItemTitle] = useState('');
 
+  const [budgetTotal, setBudgetTotal] = useState('50000000');
+  const [budgetCurrency, setBudgetCurrency] = useState('KRW');
+  const [budgetStartDate, setBudgetStartDate] = useState('');
+  const [budgetEndDate, setBudgetEndDate] = useState('');
+  const [budgetSummary, setBudgetSummary] = useState<{
+    totalBudget: number;
+    totalPlanned: number;
+    totalSpent: number;
+    totalRemaining: number;
+    categories: Array<{ id: number; name: string; plannedAmount: number; spentAmount: number; remainingAmount: number; sortOrder: number }>;
+  } | null>(null);
+  const [newCategoryName, setNewCategoryName] = useState('');
+  const [newCategoryPlanned, setNewCategoryPlanned] = useState('0');
+
   const selectedChecklist = useMemo(
     () => checklists.find((c) => c.id === selectedChecklistId) ?? checklists[0],
     [checklists, selectedChecklistId],
@@ -57,8 +71,21 @@ export default function PreparePage() {
     }
   };
 
+  const loadBudget = async () => {
+    try {
+      const { getBudgetSummary } = await import('@/lib/api/s3');
+      const summary = await getBudgetSummary();
+      setBudgetSummary(summary);
+      setBudgetTotal(String(summary.totalBudget));
+      setBudgetCurrency(summary.currency);
+    } catch {
+      // 예산이 아직 생성되지 않은 경우 조용히 유지
+    }
+  };
+
   useEffect(() => {
     refresh();
+    loadBudget();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -100,6 +127,40 @@ export default function PreparePage() {
       await refresh();
     } catch {
       toast.error('상태 변경 실패');
+    }
+  };
+
+  const onSaveBudget = async () => {
+    try {
+      const { upsertBudget } = await import('@/lib/api/s3');
+      const summary = await upsertBudget({
+        totalBudget: Number(budgetTotal || 0),
+        currency: budgetCurrency,
+        startDate: budgetStartDate || undefined,
+        endDate: budgetEndDate || undefined,
+      });
+      setBudgetSummary(summary);
+      toast.success('예산 저장 완료');
+    } catch {
+      toast.error('예산 저장 실패');
+    }
+  };
+
+  const onCreateCategory = async () => {
+    if (!newCategoryName.trim()) {
+      toast.error('카테고리명을 입력해주세요.');
+      return;
+    }
+    try {
+      const { createBudgetCategory, getBudgetSummary } = await import('@/lib/api/s3');
+      await createBudgetCategory({ name: newCategoryName, plannedAmount: Number(newCategoryPlanned || 0), sortOrder: 0 });
+      const summary = await getBudgetSummary();
+      setBudgetSummary(summary);
+      setNewCategoryName('');
+      setNewCategoryPlanned('0');
+      toast.success('카테고리 추가 완료');
+    } catch {
+      toast.error('카테고리 추가 실패', '먼저 예산을 저장해 주세요.');
     }
   };
 
@@ -229,12 +290,64 @@ export default function PreparePage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="budget">
+        <TabsContent value="budget" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>예산</CardTitle>
-              <CardDescription>S3-6에서 화면 연동을 마무리합니다.</CardDescription>
+              <CardTitle>예산 설정</CardTitle>
+              <CardDescription>총 예산과 통화, 기간을 먼저 저장하세요.</CardDescription>
             </CardHeader>
+            <CardContent className="grid gap-3 tablet:grid-cols-2">
+              <Input label="총 예산" type="number" value={budgetTotal} onChange={(e) => setBudgetTotal(e.target.value)} />
+              <Input label="통화" value={budgetCurrency} onChange={(e) => setBudgetCurrency(e.target.value)} />
+              <Input label="시작일" type="date" value={budgetStartDate} onChange={(e) => setBudgetStartDate(e.target.value)} />
+              <Input label="종료일" type="date" value={budgetEndDate} onChange={(e) => setBudgetEndDate(e.target.value)} />
+              <div className="tablet:col-span-2">
+                <Button onClick={onSaveBudget}>예산 저장</Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>카테고리</CardTitle>
+              <CardDescription>예산 카테고리를 추가하고 계획 금액을 설정하세요.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="grid gap-2 tablet:grid-cols-[1fr_180px_auto]">
+                <Input label="카테고리명" value={newCategoryName} onChange={(e) => setNewCategoryName(e.target.value)} />
+                <Input label="계획 금액" type="number" value={newCategoryPlanned} onChange={(e) => setNewCategoryPlanned(e.target.value)} />
+                <div className="self-end">
+                  <Button onClick={onCreateCategory}>추가</Button>
+                </div>
+              </div>
+
+              {budgetSummary ? (
+                <>
+                  <div className="grid gap-2 tablet:grid-cols-4">
+                    <Badge>총예산 {budgetSummary.totalBudget.toLocaleString()}</Badge>
+                    <Badge variant="info">계획합 {budgetSummary.totalPlanned.toLocaleString()}</Badge>
+                    <Badge variant="warning">지출합 {budgetSummary.totalSpent.toLocaleString()}</Badge>
+                    <Badge variant="success">잔여 {budgetSummary.totalRemaining.toLocaleString()}</Badge>
+                  </div>
+                  <div className="space-y-2">
+                    {budgetSummary.categories.length === 0 ? (
+                      <p className="text-sm text-text-secondary">카테고리를 추가해 주세요.</p>
+                    ) : (
+                      budgetSummary.categories.map((category) => (
+                        <div key={category.id} className="rounded-md border border-border p-3">
+                          <p className="font-medium">{category.name}</p>
+                          <p className="text-xs text-text-secondary">
+                            계획 {category.plannedAmount.toLocaleString()} / 지출 {category.spentAmount.toLocaleString()} / 잔여 {category.remainingAmount.toLocaleString()}
+                          </p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </>
+              ) : (
+                <p className="text-sm text-text-secondary">예산 저장 후 요약을 확인할 수 있어요.</p>
+              )}
+            </CardContent>
           </Card>
         </TabsContent>
 

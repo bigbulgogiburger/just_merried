@@ -108,5 +108,23 @@
 ### 검증
 - `npm run build` ✅
 
+## S3-6 완료 ✅ (FE 예산 화면 + API 연동, Shadcn/UI)
+
+### Frontend
+- `app/(main)/prepare/page.tsx`의 예산 탭 구현
+  - 예산 기본정보 저장(총예산/통화/기간)
+  - 카테고리 생성
+  - 요약 지표 표시(총예산/계획합/지출합/잔여)
+- `lib/api/s3.ts` 예산 API 클라이언트 확장
+  - `upsertBudget`, `getBudgetSummary`, `createBudgetCategory`
+
+### 구현 포인트
+- Shadcn 스타일 컴포넌트 조합(`Card`, `Input`, `Badge`, `Button`, `Tabs`)
+- 예산 저장 → 요약 즉시 갱신
+- 카테고리 추가 후 목록/요약 갱신
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S3-6 FE 예산 화면 + S3-3 API 연동
+- S3-7 FE 일정 화면 + S3-4 API 연동

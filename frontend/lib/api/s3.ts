@@ -23,6 +23,25 @@ export interface Checklist {
   progressPercent: number;
 }
 
+export interface BudgetCategorySummary {
+  id: number;
+  name: string;
+  plannedAmount: number;
+  spentAmount: number;
+  remainingAmount: number;
+  sortOrder: number;
+}
+
+export interface BudgetSummary {
+  budgetId: number;
+  totalBudget: number;
+  totalPlanned: number;
+  totalSpent: number;
+  totalRemaining: number;
+  currency: string;
+  categories: BudgetCategorySummary[];
+}
+
 export async function listChecklists() {
   const { data } = await apiClient.get<ApiResponse<Checklist[]>>('/checklists');
   return data.data;
@@ -63,5 +82,29 @@ export async function toggleChecklistItem(
     `/checklists/${checklistId}/items/${itemId}/toggle`,
     { completed },
   );
+  return data.data;
+}
+
+export async function upsertBudget(payload: {
+  totalBudget: number;
+  currency: string;
+  startDate?: string;
+  endDate?: string;
+}) {
+  const { data } = await apiClient.put<ApiResponse<BudgetSummary>>('/budgets/me', payload);
+  return data.data;
+}
+
+export async function getBudgetSummary() {
+  const { data } = await apiClient.get<ApiResponse<BudgetSummary>>('/budgets/me');
+  return data.data;
+}
+
+export async function createBudgetCategory(payload: {
+  name: string;
+  plannedAmount: number;
+  sortOrder?: number;
+}) {
+  const { data } = await apiClient.post<ApiResponse<BudgetCategorySummary>>('/budgets/categories', payload);
   return data.data;
 }
