@@ -7,22 +7,29 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { saveOnboarding } from '@/lib/api/s2';
+import { useAppToast } from '@/lib/providers/toast-provider';
 
 export default function OnboardingPage() {
   const router = useRouter();
+  const toast = useAppToast();
   const [weddingStatus, setWeddingStatus] = useState<'PREPARING' | 'IN_PROGRESS' | 'COMPLETED'>('PREPARING');
   const [weddingDate, setWeddingDate] = useState('');
   const [region, setRegion] = useState('서울');
   const [interests, setInterests] = useState('체크리스트,예산');
 
   const onSubmit = async () => {
-    await saveOnboarding({
-      weddingStatus,
-      weddingDate: weddingDate || undefined,
-      region,
-      interests: interests.split(',').map((v) => v.trim()).filter(Boolean),
-    });
-    router.push('/home');
+    try {
+      await saveOnboarding({
+        weddingStatus,
+        weddingDate: weddingDate || undefined,
+        region,
+        interests: interests.split(',').map((v) => v.trim()).filter(Boolean),
+      });
+      toast.success('온보딩 저장 완료', '홈 화면으로 이동합니다.');
+      router.push('/home');
+    } catch {
+      toast.error('온보딩 저장 실패', '입력값을 확인 후 다시 시도해주세요.');
+    }
   };
 
   return (

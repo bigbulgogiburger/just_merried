@@ -6,22 +6,31 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { getMe, updateMe } from '@/lib/api/s2';
+import { useAppToast } from '@/lib/providers/toast-provider';
 
 export default function ProfilePage() {
+  const toast = useAppToast();
   const [nickname, setNickname] = useState('');
   const [region, setRegion] = useState('');
   const [profileImageUrl, setProfileImageUrl] = useState('');
 
   useEffect(() => {
-    getMe().then((me) => {
-      setNickname(me.nickname ?? '');
-      setRegion(me.region ?? '');
-      setProfileImageUrl(me.profileImageUrl ?? '');
-    });
-  }, []);
+    getMe()
+      .then((me) => {
+        setNickname(me.nickname ?? '');
+        setRegion(me.region ?? '');
+        setProfileImageUrl(me.profileImageUrl ?? '');
+      })
+      .catch(() => toast.error('프로필 조회 실패'));
+  }, [toast]);
 
   const onSave = async () => {
-    await updateMe({ nickname, region, profileImageUrl });
+    try {
+      await updateMe({ nickname, region, profileImageUrl });
+      toast.success('프로필 저장 완료');
+    } catch {
+      toast.error('프로필 저장 실패');
+    }
   };
 
   return (

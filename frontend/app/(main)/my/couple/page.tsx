@@ -7,25 +7,42 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { connectCouple, createInviteCode, disconnectCouple } from '@/lib/api/s2';
+import { useAppToast } from '@/lib/providers/toast-provider';
 
 export default function CouplePage() {
+  const toast = useAppToast();
   const [inviteCode, setInviteCode] = useState('');
   const [generatedCode, setGeneratedCode] = useState('');
   const [role, setRole] = useState<'GROOM' | 'BRIDE'>('BRIDE');
 
   const onGenerate = async () => {
-    const code = await createInviteCode();
-    setGeneratedCode(code);
+    try {
+      const code = await createInviteCode();
+      setGeneratedCode(code);
+      toast.success('초대코드 생성 완료', `코드: ${code}`);
+    } catch {
+      toast.error('초대코드 생성 실패');
+    }
   };
 
   const onConnect = async () => {
-    await connectCouple({ inviteCode, role });
+    try {
+      await connectCouple({ inviteCode, role });
+      toast.success('커플 연동 완료');
+    } catch {
+      toast.error('커플 연동 실패', '코드를 확인해주세요.');
+    }
   };
 
   const onDisconnect = async () => {
-    await disconnectCouple();
-    setGeneratedCode('');
-    setInviteCode('');
+    try {
+      await disconnectCouple();
+      setGeneratedCode('');
+      setInviteCode('');
+      toast.info('커플 연동 해제 완료');
+    } catch {
+      toast.error('연동 해제 실패');
+    }
   };
 
   return (

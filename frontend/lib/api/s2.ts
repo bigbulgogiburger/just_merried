@@ -17,6 +17,14 @@ export interface MeResponse {
   grade: string;
 }
 
+export interface DashboardSummaryResponse {
+  weddingDate?: string;
+  dDay: number;
+  progressPercent: number;
+  todayTodoCount: number;
+  completedTodoCount: number;
+}
+
 export async function getMe() {
   const { data } = await apiClient.get<ApiResponse<MeResponse>>('/users/me');
   return data.data;
@@ -35,6 +43,11 @@ export async function saveOnboarding(payload: {
 }) {
   const { data } = await apiClient.post<ApiResponse<void>>('/auth/onboarding', payload);
   return data;
+}
+
+export async function getDashboardSummary() {
+  const { data } = await apiClient.get<ApiResponse<DashboardSummaryResponse>>('/dashboard/summary');
+  return data.data;
 }
 
 export async function createInviteCode() {

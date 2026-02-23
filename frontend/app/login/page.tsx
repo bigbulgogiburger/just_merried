@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { socialLogin } from '@/lib/api/s2';
+import { useAppToast } from '@/lib/providers/toast-provider';
 import { useAuthStore } from '@/stores/auth-store';
 
 const PROVIDERS = [
@@ -18,6 +19,7 @@ const PROVIDERS = [
 
 export default function LoginPage() {
   const router = useRouter();
+  const toast = useAppToast();
   const login = useAuthStore((s) => s.login);
   const [mockToken, setMockToken] = useState('dev-social-access-token');
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
@@ -31,7 +33,10 @@ export default function LoginPage() {
         tokens.accessToken,
         tokens.refreshToken,
       );
+      toast.success('로그인 성공', '온보딩으로 이동합니다.');
       router.push('/onboarding');
+    } catch {
+      toast.error('로그인 실패', '토큰 또는 서버 상태를 확인해주세요.');
     } finally {
       setLoadingProvider(null);
     }

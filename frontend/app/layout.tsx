@@ -1,6 +1,7 @@
 import './globals.css';
 
 import { QueryProvider } from '@/lib/providers/query-provider';
+import { AppToastProvider } from '@/lib/providers/toast-provider';
 
 import type { Metadata, Viewport } from 'next';
 
@@ -30,7 +31,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className="font-sans antialiased">
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <AppToastProvider>{children}</AppToastProvider>
+        </QueryProvider>
       </body>
     </html>
   );
