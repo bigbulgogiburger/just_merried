@@ -62,4 +62,16 @@ public class Schedule extends BaseTimeEntity {
         this.reminderMinutes = reminderMinutes;
         this.status = ScheduleStatus.PLANNED;
     }
+
+    public void update(String title, String description, LocalDateTime startAt, LocalDateTime endAt,
+                       Boolean allDay, Boolean sharedWithCouple, Integer reminderMinutes, ScheduleStatus status) {
+        if (title != null && !title.isBlank()) this.title = title;
+        if (description != null) this.description = description;
+        if (startAt != null) this.startAt = startAt;
+        if (endAt != null) this.endAt = endAt;
+        if (allDay != null) this.allDay = allDay;
+        if (sharedWithCouple != null) this.sharedWithCouple = sharedWithCouple;
+        if (reminderMinutes != null) this.reminderMinutes = reminderMinutes;
+        if (status != null) this.status = status;
+    }
 }

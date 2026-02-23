@@ -71,5 +71,23 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S3-4 완료 ✅ (일정 API)
+
+### API
+- `POST /api/v1/schedules`
+- `GET /api/v1/schedules?from&to` (기간 조회)
+- `PUT /api/v1/schedules/{scheduleId}`
+- `DELETE /api/v1/schedules/{scheduleId}`
+
+### 구현 포인트
+- 일정 CRUD 구현
+- 기간 조회(월/주 단위 활용 가능한 from/to 쿼리)
+- 소유자 검증 및 일정 단건 예외 처리
+- 일정 에러코드 추가
+  - `SC001 SCHEDULE_NOT_FOUND`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S3-4 일정 API (CRUD + 기간 조회)
+- S3-5 FE 체크리스트 화면 + API 연동
