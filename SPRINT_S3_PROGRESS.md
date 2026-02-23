@@ -89,5 +89,24 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S3-5 완료 ✅ (FE 체크리스트 화면 + API 연동, Shadcn/UI)
+
+### Frontend
+- `app/(main)/prepare/page.tsx` 추가
+  - 체크리스트 목록/상세/항목 토글 UI
+  - 체크리스트 생성 모달(Shadcn 스타일)
+  - 준비 허브 탭 구조(체크리스트/예산/일정)
+- `lib/api/s3.ts` 추가
+  - 체크리스트 목록/생성/항목생성/완료토글 API 래핑
+
+### 구현 포인트
+- Shadcn 스타일 컴포넌트 조합 사용
+  - `Tabs`, `Modal`, `Card`, `Badge`, `Input`, `Button`
+- 진행률 바 + 상태 배지로 즉시 피드백
+- `/prepare` 라우트와 하단 네비게이션 연동
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S3-5 FE 체크리스트 화면 + API 연동
+- S3-6 FE 예산 화면 + S3-3 API 연동

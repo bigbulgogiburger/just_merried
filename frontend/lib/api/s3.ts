@@ -1,0 +1,67 @@
+import { apiClient } from '@/lib/api/client';
+
+import type { ApiResponse } from '@/types/api';
+
+export interface ChecklistItem {
+  id: number;
+  title: string;
+  description?: string;
+  assignee: 'GROOM' | 'BRIDE' | 'BOTH';
+  completed: boolean;
+  completedAt?: string;
+  sortOrder: number;
+}
+
+export interface Checklist {
+  id: number;
+  title: string;
+  description?: string;
+  startDate?: string;
+  dueDate?: string;
+  status: 'ACTIVE' | 'ARCHIVED';
+  items: ChecklistItem[];
+  progressPercent: number;
+}
+
+export async function listChecklists() {
+  const { data } = await apiClient.get<ApiResponse<Checklist[]>>('/checklists');
+  return data.data;
+}
+
+export async function createChecklist(payload: {
+  title: string;
+  description?: string;
+  startDate?: string;
+  dueDate?: string;
+}) {
+  const { data } = await apiClient.post<ApiResponse<Checklist>>('/checklists', payload);
+  return data.data;
+}
+
+export async function createChecklistItem(
+  checklistId: number,
+  payload: {
+    title: string;
+    description?: string;
+    assignee?: 'GROOM' | 'BRIDE' | 'BOTH';
+    sortOrder?: number;
+  },
+) {
+  const { data } = await apiClient.post<ApiResponse<ChecklistItem>>(
+    `/checklists/${checklistId}/items`,
+    payload,
+  );
+  return data.data;
+}
+
+export async function toggleChecklistItem(
+  checklistId: number,
+  itemId: number,
+  completed: boolean,
+) {
+  const { data } = await apiClient.patch<ApiResponse<ChecklistItem>>(
+    `/checklists/${checklistId}/items/${itemId}/toggle`,
+    { completed },
+  );
+  return data.data;
+}
