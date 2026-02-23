@@ -32,6 +32,10 @@ public enum ErrorCode {
     INVALID_INVITE_CODE(HttpStatus.BAD_REQUEST, "CP002", "Invalid invite code"),
     COUPLE_ALREADY_MATCHED(HttpStatus.CONFLICT, "CP003", "Already matched with a partner"),
 
+    // Checklist
+    CHECKLIST_NOT_FOUND(HttpStatus.NOT_FOUND, "CL001", "Checklist not found"),
+    CHECKLIST_ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "CL002", "Checklist item not found"),
+
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),
     FILE_SIZE_EXCEEDED(HttpStatus.BAD_REQUEST, "F002", "File size exceeded"),

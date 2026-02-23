@@ -51,4 +51,16 @@ public class ChecklistItem extends BaseTimeEntity {
         this.sortOrder = sortOrder;
         this.completed = false;
     }
+
+    public void update(String title, String description, ChecklistAssignee assignee, Integer sortOrder) {
+        if (title != null && !title.isBlank()) this.title = title;
+        if (description != null) this.description = description;
+        if (assignee != null) this.assignee = assignee;
+        if (sortOrder != null) this.sortOrder = sortOrder;
+    }
+
+    public void toggleComplete(boolean completed) {
+        this.completed = completed;
+        this.completedAt = completed ? LocalDateTime.now() : null;
+    }
 }

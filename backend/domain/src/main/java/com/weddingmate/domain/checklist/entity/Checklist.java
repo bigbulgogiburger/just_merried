@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+import static java.util.Objects.requireNonNull;
+
 @Entity
 @Table(name = "checklists")
 @Getter
@@ -43,10 +45,17 @@ public class Checklist extends BaseTimeEntity {
     @Builder
     public Checklist(User user, String title, String description, LocalDate startDate, LocalDate dueDate) {
         this.user = user;
-        this.title = title;
+        this.title = requireNonNull(title);
         this.description = description;
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.status = ChecklistStatus.ACTIVE;
+    }
+
+    public void update(String title, String description, LocalDate startDate, LocalDate dueDate) {
+        if (title != null && !title.isBlank()) this.title = title;
+        this.description = description;
+        this.startDate = startDate;
+        this.dueDate = dueDate;
     }
 }

@@ -23,5 +23,28 @@
 ### 검증
 - `./gradlew :domain:compileJava :api:compileJava` ✅
 
+## S3-2 완료 ✅ (체크리스트 API)
+
+### API
+- `POST /api/v1/checklists`
+- `GET /api/v1/checklists`
+- `PUT /api/v1/checklists/{checklistId}`
+- `DELETE /api/v1/checklists/{checklistId}`
+- `POST /api/v1/checklists/{checklistId}/items`
+- `PUT /api/v1/checklists/{checklistId}/items/{itemId}`
+- `PATCH /api/v1/checklists/{checklistId}/items/{itemId}/toggle`
+- `DELETE /api/v1/checklists/{checklistId}/items/{itemId}`
+
+### 구현 포인트
+- 체크리스트/아이템 CRUD
+- 아이템 완료 토글(`completed`, `completedAt`)
+- 목록 조회 시 체크리스트별 진행률(`progressPercent`) 계산
+- 체크리스트 관련 에러코드 추가
+  - `CL001 CHECKLIST_NOT_FOUND`
+  - `CL002 CHECKLIST_ITEM_NOT_FOUND`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S3-2 체크리스트 API CRUD + 완료 토글/진행률
+- S3-3 예산 API (카테고리/지출 CRUD + 요약 통계)
