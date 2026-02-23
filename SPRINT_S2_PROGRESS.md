@@ -1,8 +1,10 @@
 # Sprint 2 진행 현황
 
-## S2-1 (Backend API 착수) 완료
+## 상태: 완료 ✅ (2026-02-24)
 
-### 구현 범위
+## 완료 범위
+
+### Backend
 - 온보딩 API
   - `POST /api/v1/auth/onboarding`
 - 내 프로필 API
@@ -16,19 +18,23 @@
   - `POST /api/v1/auth/business/register`
   - `GET /api/v1/admin/business/pending`
   - `PATCH /api/v1/admin/business/{id}/approve`
+- 대시보드 요약 API
+  - `GET /api/v1/dashboard/summary`
 
-### 핵심 구현 포인트
-- JWT `@CurrentUser` 기반 사용자 식별
-- 6자리 커플 초대코드 생성 및 중복 방지
-- 비즈니스 승인 시 사용자 역할 `VENDOR` 승격
-- 에러코드 기반 예외 처리(`ErrorCode`) 일관화
+### Frontend
+- `/login`, `/onboarding`, `/home`, `/my/profile`, `/my/couple` 구현 및 API 연동
+- 인증 미들웨어 적용
+- 전역 Toast 피드백 적용
+- Tabs/Modal/BottomSheet 기반 UI 고도화
 
-### 검증
-- 테스트 실행은 사용자 지시로 생략
-- 컴파일 검증만 수행
-  - `./gradlew :api:compileJava` ✅
+## 검증
+- `./gradlew :api:compileJava` ✅
+- `npm run build` ✅
+- 사용자 요청에 따라 테스트 실행은 생략
 
-## 다음 작업(S2-2)
-- FE 온보딩/프로필/커플연동 화면 API 연결
-- 홈 대시보드(D-Day/진행률) 최소 위젯 반영
-- OpenAPI 문서 동기화
+## 산출물 문서
+- `frontend/docs/ui/SHADCN_UI_도입기획.md`
+- `SPRINT_S2_CLOSE_REPORT.md`
+
+## 다음 작업 (Sprint 3)
+- 체크리스트/예산/일정 도메인 및 API 착수
