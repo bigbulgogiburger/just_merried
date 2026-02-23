@@ -37,19 +37,26 @@ const useAuthStore = create<AuthStore>()(
       isAuthenticated: false,
       isLoading: false,
 
-      login: (user, accessToken, refreshToken) =>
+      login: (user, accessToken, refreshToken) => {
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('accessToken', accessToken);
+          localStorage.setItem('refreshToken', refreshToken);
+          document.cookie = `accessToken=${accessToken}; path=/; max-age=86400`;
+        }
         set({
           user,
           accessToken,
           refreshToken,
           isAuthenticated: true,
           isLoading: false,
-        }),
+        });
+      },
 
       logout: () => {
         if (typeof window !== 'undefined') {
           localStorage.removeItem('accessToken');
           localStorage.removeItem('refreshToken');
+          document.cookie = 'accessToken=; path=/; max-age=0';
         }
         set({
           user: null,
