@@ -126,5 +126,24 @@
 ### 검증
 - `npm run build` ✅
 
+## S3-7 완료 ✅ (FE 일정 화면 + API 연동, Shadcn/UI)
+
+### Frontend
+- `app/(main)/prepare/page.tsx`의 일정 탭 구현
+  - 일정 생성(제목/설명/시작/종료)
+  - 일정 목록 조회(기간 기반)
+  - 일정 상태 토글(PLANNED↔DONE)
+  - 일정 삭제
+- `lib/api/s3.ts` 일정 API 클라이언트 확장
+  - `listSchedules`, `createSchedule`, `updateSchedule`, `deleteSchedule`
+
+### 구현 포인트
+- Shadcn 스타일 컴포넌트 조합(`Tabs`, `Card`, `Input`, `Badge`, `Button`)
+- 예산/체크리스트와 동일한 UX 톤앤매너 유지
+- 일정 CRUD를 `/prepare` 허브 내부 탭에서 통합 운영
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S3-7 FE 일정 화면 + S3-4 API 연동
+- S3-8 문서 마감 + Sprint3 종결 리포트

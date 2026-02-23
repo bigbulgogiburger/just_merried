@@ -26,8 +26,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   createChecklist,
   createChecklistItem,
+  createSchedule,
+  deleteSchedule,
   listChecklists,
+  listSchedules,
   toggleChecklistItem,
+  updateSchedule,
 } from '@/lib/api/s3';
 import { useAppToast } from '@/lib/providers/toast-provider';
 
@@ -56,6 +60,22 @@ export default function PreparePage() {
   const [newCategoryName, setNewCategoryName] = useState('');
   const [newCategoryPlanned, setNewCategoryPlanned] = useState('0');
 
+  const [schedules, setSchedules] = useState<Array<{
+    id: number;
+    title: string;
+    description?: string;
+    startAt: string;
+    endAt: string;
+    allDay: boolean;
+    sharedWithCouple: boolean;
+    reminderMinutes?: number;
+    status: 'PLANNED' | 'DONE' | 'CANCELED';
+  }>>([]);
+  const [scheduleTitle, setScheduleTitle] = useState('');
+  const [scheduleDesc, setScheduleDesc] = useState('');
+  const [scheduleStartAt, setScheduleStartAt] = useState('');
+  const [scheduleEndAt, setScheduleEndAt] = useState('');
+
   const selectedChecklist = useMemo(
     () => checklists.find((c) => c.id === selectedChecklistId) ?? checklists[0],
     [checklists, selectedChecklistId],
@@ -83,9 +103,23 @@ export default function PreparePage() {
     }
   };
 
+
+  const loadSchedules = async () => {
+    try {
+      const now = new Date();
+      const from = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+      const to = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59).toISOString();
+      const data = await listSchedules({ from, to });
+      setSchedules(data);
+    } catch {
+      toast.error('일정 조회 실패');
+    }
+  };
+
   useEffect(() => {
     refresh();
     loadBudget();
+    loadSchedules();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -161,6 +195,50 @@ export default function PreparePage() {
       toast.success('카테고리 추가 완료');
     } catch {
       toast.error('카테고리 추가 실패', '먼저 예산을 저장해 주세요.');
+    }
+  };
+
+
+  const onCreateSchedule = async () => {
+    if (!scheduleTitle.trim() || !scheduleStartAt || !scheduleEndAt) {
+      toast.error('제목/시작/종료 일시를 입력해주세요.');
+      return;
+    }
+    try {
+      await createSchedule({
+        title: scheduleTitle,
+        description: scheduleDesc,
+        startAt: new Date(scheduleStartAt).toISOString(),
+        endAt: new Date(scheduleEndAt).toISOString(),
+        sharedWithCouple: true,
+      });
+      setScheduleTitle('');
+      setScheduleDesc('');
+      setScheduleStartAt('');
+      setScheduleEndAt('');
+      toast.success('일정 등록 완료');
+      await loadSchedules();
+    } catch {
+      toast.error('일정 등록 실패');
+    }
+  };
+
+  const onToggleScheduleDone = async (id: number, status: 'PLANNED' | 'DONE' | 'CANCELED') => {
+    try {
+      await updateSchedule(id, { status: status === 'DONE' ? 'PLANNED' : 'DONE' });
+      await loadSchedules();
+    } catch {
+      toast.error('일정 상태 변경 실패');
+    }
+  };
+
+  const onDeleteSchedule = async (id: number) => {
+    try {
+      await deleteSchedule(id);
+      toast.info('일정 삭제 완료');
+      await loadSchedules();
+    } catch {
+      toast.error('일정 삭제 실패');
     }
   };
 
@@ -351,12 +429,46 @@ export default function PreparePage() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="schedule">
+        <TabsContent value="schedule" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>일정</CardTitle>
-              <CardDescription>S3-7에서 캘린더 UI와 함께 연결합니다.</CardDescription>
+              <CardTitle>일정 등록</CardTitle>
+              <CardDescription>월/주 캘린더 연동 전, 일정 CRUD를 먼저 연결합니다.</CardDescription>
             </CardHeader>
+            <CardContent className="grid gap-3 tablet:grid-cols-2">
+              <Input label="일정명" value={scheduleTitle} onChange={(e) => setScheduleTitle(e.target.value)} />
+              <Input label="설명" value={scheduleDesc} onChange={(e) => setScheduleDesc(e.target.value)} />
+              <Input type="datetime-local" label="시작" value={scheduleStartAt} onChange={(e) => setScheduleStartAt(e.target.value)} />
+              <Input type="datetime-local" label="종료" value={scheduleEndAt} onChange={(e) => setScheduleEndAt(e.target.value)} />
+              <div className="tablet:col-span-2">
+                <Button onClick={onCreateSchedule}>일정 추가</Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>일정 목록</CardTitle>
+              <CardDescription>클릭으로 완료/미완료 전환, 삭제 가능</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              {schedules.length === 0 ? (
+                <p className="text-sm text-text-secondary">등록된 일정이 없습니다.</p>
+              ) : (
+                schedules.map((schedule) => (
+                  <div key={schedule.id} className="flex items-center justify-between rounded-md border border-border p-3">
+                    <button type="button" className="text-left" onClick={() => onToggleScheduleDone(schedule.id, schedule.status)}>
+                      <p className={`font-medium ${schedule.status === 'DONE' ? 'line-through text-text-muted' : ''}`}>{schedule.title}</p>
+                      <p className="text-xs text-text-secondary">{new Date(schedule.startAt).toLocaleString()} ~ {new Date(schedule.endAt).toLocaleString()}</p>
+                    </button>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={schedule.status === 'DONE' ? 'success' : 'outline'}>{schedule.status}</Badge>
+                      <Button variant="ghost" onClick={() => onDeleteSchedule(schedule.id)}>삭제</Button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </CardContent>
           </Card>
         </TabsContent>
       </Tabs>

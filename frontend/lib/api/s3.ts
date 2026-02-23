@@ -42,6 +42,18 @@ export interface BudgetSummary {
   categories: BudgetCategorySummary[];
 }
 
+export interface ScheduleItem {
+  id: number;
+  title: string;
+  description?: string;
+  startAt: string;
+  endAt: string;
+  allDay: boolean;
+  sharedWithCouple: boolean;
+  reminderMinutes?: number;
+  status: 'PLANNED' | 'DONE' | 'CANCELED';
+}
+
 export async function listChecklists() {
   const { data } = await apiClient.get<ApiResponse<Checklist[]>>('/checklists');
   return data.data;
@@ -107,4 +119,46 @@ export async function createBudgetCategory(payload: {
 }) {
   const { data } = await apiClient.post<ApiResponse<BudgetCategorySummary>>('/budgets/categories', payload);
   return data.data;
+}
+
+export async function listSchedules(params?: { from?: string; to?: string }) {
+  const { data } = await apiClient.get<ApiResponse<ScheduleItem[]>>('/schedules', {
+    params,
+  });
+  return data.data;
+}
+
+export async function createSchedule(payload: {
+  title: string;
+  description?: string;
+  startAt: string;
+  endAt: string;
+  allDay?: boolean;
+  sharedWithCouple?: boolean;
+  reminderMinutes?: number;
+}) {
+  const { data } = await apiClient.post<ApiResponse<ScheduleItem>>('/schedules', payload);
+  return data.data;
+}
+
+export async function updateSchedule(
+  scheduleId: number,
+  payload: Partial<{
+    title: string;
+    description?: string;
+    startAt: string;
+    endAt: string;
+    allDay: boolean;
+    sharedWithCouple: boolean;
+    reminderMinutes: number;
+    status: 'PLANNED' | 'DONE' | 'CANCELED';
+  }>,
+) {
+  const { data } = await apiClient.put<ApiResponse<ScheduleItem>>(`/schedules/${scheduleId}`, payload);
+  return data.data;
+}
+
+export async function deleteSchedule(scheduleId: number) {
+  const { data } = await apiClient.delete<ApiResponse<void>>(`/schedules/${scheduleId}`);
+  return data;
 }
