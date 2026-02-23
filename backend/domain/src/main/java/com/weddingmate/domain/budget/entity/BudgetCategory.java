@@ -41,4 +41,19 @@ public class BudgetCategory extends BaseTimeEntity {
         this.spentAmount = spentAmount;
         this.sortOrder = sortOrder;
     }
+
+    public void update(String name, Long plannedAmount, Long spentAmount, Integer sortOrder) {
+        if (name != null && !name.isBlank()) this.name = name;
+        if (plannedAmount != null) this.plannedAmount = plannedAmount;
+        if (spentAmount != null) this.spentAmount = spentAmount;
+        if (sortOrder != null) this.sortOrder = sortOrder;
+    }
+
+    public void increaseSpent(long amount) {
+        this.spentAmount += amount;
+    }
+
+    public void decreaseSpent(long amount) {
+        this.spentAmount = Math.max(0, this.spentAmount - amount);
+    }
 }

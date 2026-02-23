@@ -55,4 +55,12 @@ public class Expense extends BaseTimeEntity {
         this.memo = memo;
         this.payerType = payerType != null ? payerType : PayerType.TOGETHER;
     }
+
+    public void update(String title, Long amount, LocalDate expenseDate, String memo, PayerType payerType) {
+        if (title != null && !title.isBlank()) this.title = title;
+        if (amount != null) this.amount = amount;
+        if (expenseDate != null) this.expenseDate = expenseDate;
+        if (memo != null) this.memo = memo;
+        if (payerType != null) this.payerType = payerType;
+    }
 }

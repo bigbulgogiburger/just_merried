@@ -36,6 +36,11 @@ public enum ErrorCode {
     CHECKLIST_NOT_FOUND(HttpStatus.NOT_FOUND, "CL001", "Checklist not found"),
     CHECKLIST_ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "CL002", "Checklist item not found"),
 
+    // Budget
+    BUDGET_NOT_FOUND(HttpStatus.NOT_FOUND, "BG001", "Budget not found"),
+    BUDGET_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "BG002", "Budget category not found"),
+    EXPENSE_NOT_FOUND(HttpStatus.NOT_FOUND, "BG003", "Expense not found"),
+
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),
     FILE_SIZE_EXCEEDED(HttpStatus.BAD_REQUEST, "F002", "File size exceeded"),

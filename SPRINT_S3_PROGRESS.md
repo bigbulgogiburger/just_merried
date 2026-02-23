@@ -46,5 +46,30 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S3-3 완료 ✅ (예산 API)
+
+### API
+- `PUT /api/v1/budgets/me` (예산 생성/수정)
+- `GET /api/v1/budgets/me` (예산 요약)
+- `POST /api/v1/budgets/categories`
+- `PUT /api/v1/budgets/categories/{categoryId}`
+- `DELETE /api/v1/budgets/categories/{categoryId}`
+- `POST /api/v1/budgets/expenses`
+- `GET /api/v1/budgets/expenses?from&to`
+- `PUT /api/v1/budgets/expenses/{expenseId}`
+- `DELETE /api/v1/budgets/expenses/{expenseId}`
+
+### 구현 포인트
+- 카테고리/지출 CRUD
+- 지출 등록·수정·삭제 시 카테고리 `spentAmount` 동기화
+- 예산 요약 응답(`totalBudget/totalPlanned/totalSpent/totalRemaining`) 제공
+- 예산 관련 에러코드 추가
+  - `BG001 BUDGET_NOT_FOUND`
+  - `BG002 BUDGET_CATEGORY_NOT_FOUND`
+  - `BG003 EXPENSE_NOT_FOUND`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S3-3 예산 API (카테고리/지출 CRUD + 요약 통계)
+- S3-4 일정 API (CRUD + 기간 조회)

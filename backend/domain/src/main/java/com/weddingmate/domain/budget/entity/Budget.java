@@ -44,4 +44,11 @@ public class Budget extends BaseTimeEntity {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public void update(Long totalBudget, String currency, LocalDate startDate, LocalDate endDate) {
+        if (totalBudget != null) this.totalBudget = totalBudget;
+        if (currency != null && !currency.isBlank()) this.currency = currency;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 }
