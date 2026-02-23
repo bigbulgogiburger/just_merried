@@ -21,5 +21,25 @@
 ### 검증
 - `./gradlew :domain:compileJava :api:compileJava` ✅
 
+## S4-2 완료 ✅ (Vendor API 목록/상세/등록)
+
+### API
+- `GET /api/v1/vendors`
+  - 필터: `categoryId`, `region`, `minPrice`, `maxPrice`
+  - 정렬: `latest`, `rating`, `price_asc`, `price_desc`
+- `GET /api/v1/vendors/{id}`
+- `POST /api/v1/vendors` (관리용 최소 등록)
+
+### 구현 포인트
+- Vendor 목록 필터/정렬 처리
+- 상세 응답에 이미지/가격 패키지 포함
+- 카테고리/사용자 유효성 검증
+- Vendor 에러코드 추가
+  - `VD001 VENDOR_NOT_FOUND`
+  - `VD002 VENDOR_CATEGORY_NOT_FOUND`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S4-2 Vendor API (목록/상세/관리용 최소 등록)
+- S4-3 찜/비교 API

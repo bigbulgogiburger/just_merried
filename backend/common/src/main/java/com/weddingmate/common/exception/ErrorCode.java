@@ -44,6 +44,10 @@ public enum ErrorCode {
     // Schedule
     SCHEDULE_NOT_FOUND(HttpStatus.NOT_FOUND, "SC001", "Schedule not found"),
 
+    // Vendor
+    VENDOR_NOT_FOUND(HttpStatus.NOT_FOUND, "VD001", "Vendor not found"),
+    VENDOR_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "VD002", "Vendor category not found"),
+
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),
     FILE_SIZE_EXCEEDED(HttpStatus.BAD_REQUEST, "F002", "File size exceeded"),

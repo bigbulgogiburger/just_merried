@@ -8,4 +8,12 @@ import java.util.List;
 
 public interface VendorRepository extends JpaRepository<Vendor, Long> {
     List<Vendor> findByStatus(VendorStatus status);
+
+    List<Vendor> findByStatusAndCategoryIdAndRegionContainingIgnoreCaseAndMinPriceGreaterThanEqualAndMaxPriceLessThanEqual(
+            VendorStatus status,
+            Long categoryId,
+            String region,
+            long minPrice,
+            long maxPrice
+    );
 }
