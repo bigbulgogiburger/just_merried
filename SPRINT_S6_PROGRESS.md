@@ -95,5 +95,26 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S6-6 완료 ✅ (FE DM 화면, Shadcn/UI)
+
+### Frontend
+- `app/(main)/community/dm/page.tsx`
+  - DM 방 생성/재사용 시작
+  - 내 DM 방 목록
+- `app/(main)/community/dm/[roomId]/page.tsx`
+  - 메시지 타임라인
+  - 메시지 입력/전송
+  - 4초 주기 폴링 기반 갱신
+- `frontend/lib/api/s6.ts`
+  - DM API 클라이언트 래핑
+
+### 구현 포인트
+- Shadcn 스타일 컴포넌트 기반으로 DM 목록/상세 UX 정렬
+- 메시지 전송 후 즉시 재조회로 최신화
+- 최소 실시간 전략으로 polling 적용(SSE 연계는 S6-5 완료)
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S6-6 FE DM 화면 (Shadcn/ui)
+- S6-7 FE 알림센터
