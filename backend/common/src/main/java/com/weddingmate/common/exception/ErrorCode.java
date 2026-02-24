@@ -74,7 +74,13 @@ public enum ErrorCode {
     MARKET_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "M001", "Market category not found"),
     MARKET_PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "M002", "Market product not found"),
     SECONDHAND_PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "M003", "Secondhand product not found"),
-    SECONDHAND_PRODUCT_ACCESS_DENIED(HttpStatus.FORBIDDEN, "M004", "Secondhand product access denied");
+    SECONDHAND_PRODUCT_ACCESS_DENIED(HttpStatus.FORBIDDEN, "M004", "Secondhand product access denied"),
+    PAYMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "M005", "Payment not found"),
+    ESCROW_NOT_FOUND(HttpStatus.NOT_FOUND, "M006", "Escrow transaction not found"),
+    ESCROW_ACCESS_DENIED(HttpStatus.FORBIDDEN, "M007", "Escrow access denied"),
+    OFFER_NOT_FOUND(HttpStatus.NOT_FOUND, "M008", "Price offer not found"),
+    OFFER_ACCESS_DENIED(HttpStatus.FORBIDDEN, "M009", "Price offer access denied"),
+    SUBSCRIPTION_NOT_FOUND(HttpStatus.NOT_FOUND, "M010", "Subscription not found");
 
     private final HttpStatus httpStatus;
     private final String code;

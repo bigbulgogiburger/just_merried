@@ -46,6 +46,9 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false, length = 20)
     private UserGrade grade;
 
+    @Column(name = "manner_temperature", nullable = false, precision = 4, scale = 1)
+    private double mannerTemperature;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private OAuthProvider provider;
@@ -67,6 +70,7 @@ public class User extends BaseTimeEntity {
         this.grade = grade != null ? grade : UserGrade.FREE;
         this.provider = provider;
         this.providerId = providerId;
+        this.mannerTemperature = 36.5;
     }
 
     public void updateProfile(String nickname, String profileImageUrl, String region) {
@@ -82,5 +86,9 @@ public class User extends BaseTimeEntity {
 
     public void promoteToVendor() {
         this.role = UserRole.VENDOR;
+    }
+
+    public void updateMannerTemperature(double value) {
+        this.mannerTemperature = Math.max(0.0, Math.min(99.9, value));
     }
 }
