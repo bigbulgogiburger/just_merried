@@ -119,7 +119,7 @@ just_married/
 
 | Service | URL/Port |
 |---------|---------|
-| Backend API | http://localhost:8080 |
+| Backend API | http://localhost:8082 |
 | Frontend | http://localhost:3000 |
 | PostgreSQL | localhost:5432 |
 | Redis | localhost:6379 |
