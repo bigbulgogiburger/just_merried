@@ -40,27 +40,9 @@ spring:
     store-type: redis
     timeout: 3600s
 
-  security:
-    oauth2:
-      client:
-        registration:
-          kakao:
-            client-id: ${KAKAO_CLIENT_ID:your-kakao-client-id}
-            client-secret: ${KAKAO_CLIENT_SECRET:your-kakao-client-secret}
-            redirect-uri: http://localhost:8080/api/v1/auth/callback/kakao
-            authorization-grant-type: authorization_code
-            scope: profile_nickname,account_email,profile_image
-          naver:
-            client-id: ${NAVER_CLIENT_ID:your-naver-client-id}
-            client-secret: ${NAVER_CLIENT_SECRET:your-naver-client-secret}
-            redirect-uri: http://localhost:8080/api/v1/auth/callback/naver
-            authorization-grant-type: authorization_code
-            scope: name,email,profile_image
-          google:
-            client-id: ${GOOGLE_CLIENT_ID:your-google-client-id}
-            client-secret: ${GOOGLE_CLIENT_SECRET:your-google-client-secret}
-            redirect-uri: http://localhost:8080/api/v1/auth/callback/google
-            scope: openid,profile,email
+app:
+  auth:
+    mock-oauth-enabled: true
 
 cloud:
   aws:

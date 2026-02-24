@@ -10,9 +10,11 @@ import com.weddingmate.domain.user.repository.UserSettingsRepository;
 import com.weddingmate.infra.auth.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.UUID;
 
@@ -25,9 +27,12 @@ public class AuthService {
     private final UserSettingsRepository userSettingsRepository;
     private final JwtTokenProvider jwtTokenProvider;
 
+    @Value("${app.auth.mock-oauth-enabled:false}")
+    private boolean mockOauthEnabled;
+
     @Transactional
     public JwtTokenProvider.TokenPair login(OAuthProvider provider, Map<String, Object> attributes) {
-        OAuthUserInfo userInfo = OAuthUserInfoExtractor.extract(provider, attributes);
+        OAuthUserInfo userInfo = resolveUserInfo(provider, attributes);
 
         User user = userRepository.findByProviderAndProviderId(provider, userInfo.providerId())
                 .orElseGet(() -> createUser(userInfo));
@@ -43,6 +48,32 @@ public class AuthService {
     @Transactional
     public void logout(String accessToken, Long userId) {
         jwtTokenProvider.logout(accessToken, userId);
+    }
+
+    private OAuthUserInfo resolveUserInfo(OAuthProvider provider, Map<String, Object> attributes) {
+        if (mockOauthEnabled && attributes.containsKey("access_token")) {
+            return buildMockUserInfo(provider, String.valueOf(attributes.get("access_token")));
+        }
+        return OAuthUserInfoExtractor.extract(provider, attributes);
+    }
+
+    private OAuthUserInfo buildMockUserInfo(OAuthProvider provider, String accessToken) {
+        String seed = provider.name() + ":" + accessToken;
+        String providerId = UUID.nameUUIDFromBytes(seed.getBytes(StandardCharsets.UTF_8)).toString();
+        String nickname = switch (provider) {
+            case KAKAO -> "카카오_테스트유저";
+            case NAVER -> "네이버_테스트유저";
+            case GOOGLE -> "구글_테스트유저";
+            case APPLE -> "애플_테스트유저";
+        };
+
+        return new OAuthUserInfo(
+                provider,
+                providerId,
+                provider.name().toLowerCase() + "_" + providerId.substring(0, 8) + "@mock.weddingmate.local",
+                nickname,
+                null
+        );
     }
 
     private User createUser(OAuthUserInfo userInfo) {
