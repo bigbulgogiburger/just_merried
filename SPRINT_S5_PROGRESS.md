@@ -77,5 +77,24 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S5-5 완료 ✅ (팔로우 API)
+
+### API
+- `POST /api/v1/community/users/{id}/follow`
+- `DELETE /api/v1/community/users/{id}/follow`
+- `GET /api/v1/community/users/{id}/followers`
+- `GET /api/v1/community/users/{id}/following`
+
+### 구현 포인트
+- 팔로우/언팔로우 구현
+- 팔로워/팔로잉 목록 조회 구현
+- 자기 자신 팔로우 금지 정책 적용
+- 팔로우 예외코드 추가
+  - `CM004 FOLLOW_NOT_FOUND`
+  - `CM005 FOLLOW_SELF_NOT_ALLOWED`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S5-5 팔로우 API
+- S5-6 해시태그/탐색 API
