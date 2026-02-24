@@ -1,5 +1,6 @@
 package com.weddingmate.api.community.notification;
 
+import com.weddingmate.api.community.realtime.SseBroker;
 import com.weddingmate.domain.messaging.entity.Notification;
 import com.weddingmate.domain.messaging.entity.NotificationType;
 import com.weddingmate.domain.messaging.repository.NotificationRepository;
@@ -15,6 +16,7 @@ public class NotificationEventService {
 
     private final NotificationRepository notificationRepository;
     private final UserRepository userRepository;
+    private final SseBroker sseBroker;
 
     @Transactional
     public void onLike(Long actorUserId, Long receiverUserId, Long postId) {
@@ -49,7 +51,7 @@ public class NotificationEventService {
         User receiver = userRepository.findById(receiverUserId).orElse(null);
         if (receiver == null) return;
 
-        notificationRepository.save(Notification.builder()
+        Notification saved = notificationRepository.save(Notification.builder()
                 .user(receiver)
                 .type(type)
                 .title(title)
@@ -58,5 +60,13 @@ public class NotificationEventService {
                 .targetId(targetId)
                 .payloadJson(payloadJson)
                 .build());
+
+        sseBroker.sendToUser(receiverUserId, "notification", java.util.Map.of(
+                "id", saved.getId(),
+                "type", saved.getType().name(),
+                "title", saved.getTitle(),
+                "targetType", saved.getTargetType(),
+                "targetId", saved.getTargetId()
+        ));
     }
 }

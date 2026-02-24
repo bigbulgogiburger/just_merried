@@ -76,5 +76,24 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S6-5 완료 ✅ (실시간 전달 기초, SSE)
+
+### API
+- `GET /api/v1/community/realtime/subscribe`
+  - 사용자별 SSE 구독 채널 연결
+
+### 구현 포인트
+- `SseBroker` 추가
+  - 사용자별 emitter 관리
+  - 연결/타임아웃/에러 시 정리
+  - 이벤트 푸시(sendToUser)
+- `RealtimeController` 추가
+  - 인증 사용자 기준 SSE subscribe 엔드포인트
+- 알림 이벤트 연계
+  - `NotificationEventService`에서 알림 저장 후 SSE 즉시 발행
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S6-5 실시간 전달 기초 (SSE 최소 경로)
+- S6-6 FE DM 화면 (Shadcn/ui)
