@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/weddingmate
+    url: jdbc:postgresql://localhost:5433/weddingmate_dev
     username: weddingmate
-    password: weddingmate
+    password: weddingmate_local
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10

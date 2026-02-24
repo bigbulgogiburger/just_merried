@@ -6,7 +6,7 @@ services:
     container_name: weddingmate-postgres
     restart: unless-stopped
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_DB: weddingmate_dev
       POSTGRES_USER: weddingmate

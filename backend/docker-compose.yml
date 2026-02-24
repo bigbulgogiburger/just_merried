@@ -11,7 +11,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: local
       DB_HOST: postgres
-      DB_PORT: 5432
+      DB_PORT: 5433
       DB_NAME: weddingmate
       DB_USERNAME: weddingmate
       DB_PASSWORD: weddingmate
@@ -29,7 +29,7 @@ services:
     image: postgres:16-alpine
     container_name: weddingmate-postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       POSTGRES_DB: weddingmate
       POSTGRES_USER: weddingmate
