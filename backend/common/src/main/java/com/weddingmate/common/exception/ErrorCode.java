@@ -53,6 +53,7 @@ public enum ErrorCode {
     // Community
     POST_NOT_FOUND(HttpStatus.NOT_FOUND, "CM001", "Post not found"),
     POST_ACCESS_DENIED(HttpStatus.FORBIDDEN, "CM002", "Post access denied"),
+    COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "CM003", "Comment not found"),
 
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),

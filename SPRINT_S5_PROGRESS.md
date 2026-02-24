@@ -55,5 +55,27 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S5-4 완료 ✅ (좋아요/댓글 API)
+
+### API
+- 좋아요
+  - `POST /api/v1/community/posts/{id}/like`
+  - `DELETE /api/v1/community/posts/{id}/like`
+- 댓글
+  - `POST /api/v1/community/posts/{id}/comments`
+  - `GET /api/v1/community/posts/{id}/comments`
+  - `DELETE /api/v1/community/comments/{id}`
+
+### 구현 포인트
+- 좋아요 중복 방지 및 카운트 동기화
+- 댓글 등록/조회/삭제 구현
+- 부모 댓글 검증(대댓글 게시글 일치 체크)
+- 본인 댓글만 삭제 가능
+- 커뮤니티 예외코드 추가
+  - `CM003 COMMENT_NOT_FOUND`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S5-4 좋아요/댓글 API
+- S5-5 팔로우 API
