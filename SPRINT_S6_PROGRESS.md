@@ -39,5 +39,22 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S6-3 완료 ✅ (알림 API)
+
+### API
+- `GET /api/v1/community/notifications`
+- `PATCH /api/v1/community/notifications/{id}/read`
+- `PATCH /api/v1/community/notifications/read-all`
+
+### 구현 포인트
+- 알림 목록 + 읽음 여부 결합 응답
+- 단건 읽음 처리(소유자 검증)
+- 전체 읽음 처리
+- 알림 예외코드 추가
+  - `CM008 NOTIFICATION_NOT_FOUND`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S6-3 알림 API (목록/단건읽음/전체읽음)
+- S6-4 이벤트 발행/저장 연계 (좋아요/댓글/팔로우/DM)

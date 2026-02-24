@@ -58,6 +58,7 @@ public enum ErrorCode {
     FOLLOW_SELF_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "CM005", "Self follow not allowed"),
     DM_ROOM_NOT_FOUND(HttpStatus.NOT_FOUND, "CM006", "DM room not found"),
     DM_ROOM_ACCESS_DENIED(HttpStatus.FORBIDDEN, "CM007", "DM room access denied"),
+    NOTIFICATION_NOT_FOUND(HttpStatus.NOT_FOUND, "CM008", "Notification not found"),
 
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),
