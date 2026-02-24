@@ -4,6 +4,7 @@ import com.weddingmate.api.community.dm.dto.DmMessageCreateRequest;
 import com.weddingmate.api.community.dm.dto.DmMessageResponse;
 import com.weddingmate.api.community.dm.dto.DmRoomCreateRequest;
 import com.weddingmate.api.community.dm.dto.DmRoomResponse;
+import com.weddingmate.api.community.notification.NotificationEventService;
 import com.weddingmate.common.exception.BusinessException;
 import com.weddingmate.common.exception.ErrorCode;
 import com.weddingmate.common.exception.NotFoundException;
@@ -31,6 +32,7 @@ public class DmService {
     private final ChatParticipantRepository chatParticipantRepository;
     private final ChatMessageRepository chatMessageRepository;
     private final UserRepository userRepository;
+    private final NotificationEventService notificationEventService;
 
     @Transactional
     public DmRoomResponse createOrReuseRoom(Long userId, DmRoomCreateRequest request) {
@@ -94,6 +96,12 @@ public class DmService {
                 .content(request.content())
                 .messageType(ChatMessageType.TEXT)
                 .build());
+
+        chatParticipantRepository.findByRoomId(roomId).stream()
+                .map(ChatParticipant::getUser)
+                .map(User::getId)
+                .filter(id -> !id.equals(userId))
+                .forEach(receiverId -> notificationEventService.onDm(userId, receiverId, roomId, message.getId()));
 
         return DmMessageResponse.from(message);
     }

@@ -56,5 +56,25 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S6-4 완료 ✅ (이벤트 발행/저장 연계)
+
+### 연계 범위
+- 좋아요 발생 시 알림 생성
+- 댓글 발생 시 알림 생성
+- 팔로우 발생 시 알림 생성
+- DM 메시지 전송 시 상대 참여자에게 알림 생성
+
+### 구현 포인트
+- `NotificationEventService` 추가
+- 알림 생성 공통화(type/title/body/target/payload)
+- 자기 자신 대상 알림 생성 방지
+- 기존 서비스 연계
+  - `InteractionService` (like/comment)
+  - `FollowService`
+  - `DmService`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S6-4 이벤트 발행/저장 연계 (좋아요/댓글/팔로우/DM)
+- S6-5 실시간 전달 기초 (SSE 최소 경로)

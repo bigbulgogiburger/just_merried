@@ -5,6 +5,7 @@ import com.weddingmate.api.community.dto.CommentResponse;
 import com.weddingmate.common.exception.BusinessException;
 import com.weddingmate.common.exception.ErrorCode;
 import com.weddingmate.common.exception.NotFoundException;
+import com.weddingmate.api.community.notification.NotificationEventService;
 import com.weddingmate.domain.community.entity.Comment;
 import com.weddingmate.domain.community.entity.Post;
 import com.weddingmate.domain.community.entity.PostLike;
@@ -27,6 +28,7 @@ public class InteractionService {
     private final PostLikeRepository postLikeRepository;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
+    private final NotificationEventService notificationEventService;
 
     @Transactional
     public void like(Long userId, Long postId) {
@@ -35,6 +37,7 @@ public class InteractionService {
 
         postLikeRepository.save(PostLike.builder().post(post).user(getUser(userId)).build());
         post.increaseLikeCount();
+        notificationEventService.onLike(userId, post.getUser().getId(), postId);
     }
 
     @Transactional
@@ -67,6 +70,7 @@ public class InteractionService {
                 .content(request.content())
                 .build());
         post.increaseCommentCount();
+        notificationEventService.onComment(userId, post.getUser().getId(), postId, comment.getId());
 
         return CommentResponse.from(comment);
     }

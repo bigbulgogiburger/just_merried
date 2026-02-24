@@ -1,6 +1,7 @@
 package com.weddingmate.api.community;
 
 import com.weddingmate.api.community.dto.FollowUserResponse;
+import com.weddingmate.api.community.notification.NotificationEventService;
 import com.weddingmate.common.exception.BusinessException;
 import com.weddingmate.common.exception.ErrorCode;
 import com.weddingmate.common.exception.NotFoundException;
@@ -20,6 +21,7 @@ public class FollowService {
 
     private final FollowRepository followRepository;
     private final UserRepository userRepository;
+    private final NotificationEventService notificationEventService;
 
     @Transactional
     public void follow(Long followerId, Long followingId) {
@@ -38,6 +40,7 @@ public class FollowService {
                 .follower(follower)
                 .following(following)
                 .build());
+        notificationEventService.onFollow(followerId, followingId);
     }
 
     @Transactional
