@@ -68,7 +68,13 @@ public enum ErrorCode {
 
     // Business
     BUSINESS_PROFILE_NOT_FOUND(HttpStatus.NOT_FOUND, "B001", "Business profile not found"),
-    BUSINESS_ALREADY_REGISTERED(HttpStatus.CONFLICT, "B002", "Business already registered");
+    BUSINESS_ALREADY_REGISTERED(HttpStatus.CONFLICT, "B002", "Business already registered"),
+
+    // Market
+    MARKET_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "M001", "Market category not found"),
+    MARKET_PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "M002", "Market product not found"),
+    SECONDHAND_PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND, "M003", "Secondhand product not found"),
+    SECONDHAND_PRODUCT_ACCESS_DENIED(HttpStatus.FORBIDDEN, "M004", "Secondhand product access denied");
 
     private final HttpStatus httpStatus;
     private final String code;

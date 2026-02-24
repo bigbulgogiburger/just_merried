@@ -1,0 +1,3 @@
+package com.weddingmate.api.market.dto;
+import com.weddingmate.domain.market.entity.SecondhandProduct; import java.util.List;
+public record SecondhandDetailResponse(Long id,Long sellerUserId,String title,String description,long price,String region,String conditionStatus,String tradeMethod,String saleStatus,List<SecondhandImageResponse> images){ public static SecondhandDetailResponse of(SecondhandProduct p,List<SecondhandImageResponse> images){return new SecondhandDetailResponse(p.getId(),p.getSellerUser().getId(),p.getTitle(),p.getDescription(),p.getPrice(),p.getRegion(),p.getConditionStatus().name(),p.getTradeMethod().name(),p.getSaleStatus().name(),images);} }

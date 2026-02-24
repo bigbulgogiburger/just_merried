@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface MarketCategoryRepository extends JpaRepository<MarketCategory, Long> {
     Optional<MarketCategory> findBySlug(String slug);
+    java.util.List<MarketCategory> findAllByOrderBySortOrderAsc();
 }

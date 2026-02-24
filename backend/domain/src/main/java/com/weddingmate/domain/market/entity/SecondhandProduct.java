@@ -59,4 +59,18 @@ public class SecondhandProduct extends BaseTimeEntity {
         this.tradeMethod = tradeMethod == null ? SecondhandTradeMethod.BOTH : tradeMethod;
         this.saleStatus = saleStatus == null ? SecondhandSaleStatus.ON_SALE : saleStatus;
     }
+
+    public void update(String title, String description, long price, String region,
+                       SecondhandConditionStatus conditionStatus, SecondhandTradeMethod tradeMethod) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.region = region;
+        this.conditionStatus = conditionStatus;
+        this.tradeMethod = tradeMethod;
+    }
+
+    public void changeSaleStatus(SecondhandSaleStatus saleStatus) {
+        this.saleStatus = saleStatus;
+    }
 }

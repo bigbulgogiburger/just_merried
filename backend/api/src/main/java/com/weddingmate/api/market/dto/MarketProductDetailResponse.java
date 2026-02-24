@@ -1,0 +1,4 @@
+package com.weddingmate.api.market.dto;
+import com.weddingmate.domain.market.entity.MarketProduct;
+import java.util.List;
+public record MarketProductDetailResponse(Long id,Long categoryId,String categoryName,String name,String description,long basePrice,String status,int stockQuantity,int reviewCount,double reviewAverage,List<MarketProductImageResponse> images,List<MarketProductOptionResponse> options){ public static MarketProductDetailResponse of(MarketProduct p,List<MarketProductImageResponse> images,List<MarketProductOptionResponse> options){ return new MarketProductDetailResponse(p.getId(),p.getCategory().getId(),p.getCategory().getName(),p.getName(),p.getDescription(),p.getBasePrice(),p.getStatus().name(),p.getStockQuantity(),0,0.0,images,options); }}

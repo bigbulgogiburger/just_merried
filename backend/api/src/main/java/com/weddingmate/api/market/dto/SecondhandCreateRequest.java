@@ -1,0 +1,3 @@
+package com.weddingmate.api.market.dto;
+import com.weddingmate.domain.market.entity.*; import jakarta.validation.constraints.*; import java.util.List;
+public record SecondhandCreateRequest(@NotBlank @Size(max=150) String title,@Size(max=5000) String description,@Min(0) long price,@NotBlank @Size(max=80) String region,@NotNull SecondhandConditionStatus conditionStatus,@NotNull SecondhandTradeMethod tradeMethod,List<@NotBlank String> imageUrls){}
