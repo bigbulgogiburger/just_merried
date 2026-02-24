@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 @Entity
 @Table(name = "vendors")
@@ -79,5 +80,16 @@ public class Vendor extends BaseTimeEntity {
         this.ratingAvg = BigDecimal.ZERO;
         this.ratingCount = 0;
         this.status = VendorStatus.ACTIVE;
+    }
+
+    public void refreshRating(long ratingSum, long reviewCount) {
+        if (reviewCount <= 0) {
+            this.ratingCount = 0;
+            this.ratingAvg = BigDecimal.ZERO;
+            return;
+        }
+        this.ratingCount = Math.toIntExact(reviewCount);
+        this.ratingAvg = BigDecimal.valueOf((double) ratingSum / reviewCount)
+                .setScale(2, RoundingMode.HALF_UP);
     }
 }

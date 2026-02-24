@@ -1,5 +1,7 @@
 package com.weddingmate.api.vendor;
 
+import com.weddingmate.api.vendor.dto.ReviewCreateRequest;
+import com.weddingmate.api.vendor.dto.ReviewResponse;
 import com.weddingmate.api.vendor.dto.VendorCompareResponse;
 import com.weddingmate.api.vendor.dto.VendorCreateRequest;
 import com.weddingmate.api.vendor.dto.VendorDetailResponse;
@@ -24,6 +26,7 @@ public class VendorController {
 
     private final VendorService vendorService;
     private final VendorInteractionService vendorInteractionService;
+    private final VendorReviewService vendorReviewService;
 
     @Operation(summary = "업체 목록")
     @GetMapping
@@ -95,5 +98,21 @@ public class VendorController {
             @CurrentUser UserPrincipal principal
     ) {
         return ResponseEntity.ok(ApiResponse.ok(vendorInteractionService.listCompare(principal.userId())));
+    }
+
+    @Operation(summary = "리뷰 등록")
+    @PostMapping("/{id}/reviews")
+    public ResponseEntity<ApiResponse<ReviewResponse>> createReview(
+            @CurrentUser UserPrincipal principal,
+            @PathVariable Long id,
+            @Valid @RequestBody ReviewCreateRequest request
+    ) {
+        return ResponseEntity.ok(ApiResponse.ok("리뷰가 등록되었습니다.", vendorReviewService.create(principal.userId(), id, request)));
+    }
+
+    @Operation(summary = "리뷰 목록")
+    @GetMapping("/{id}/reviews")
+    public ResponseEntity<ApiResponse<List<ReviewResponse>>> reviews(@PathVariable Long id) {
+        return ResponseEntity.ok(ApiResponse.ok(vendorReviewService.list(id)));
     }
 }

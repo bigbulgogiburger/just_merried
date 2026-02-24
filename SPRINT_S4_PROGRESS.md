@@ -62,5 +62,21 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S4-4 완료 ✅ (리뷰 API)
+
+### API
+- `POST /api/v1/vendors/{id}/reviews`
+- `GET /api/v1/vendors/{id}/reviews`
+
+### 구현 포인트
+- 리뷰 등록/목록 조회 구현
+- 리뷰 등록 시 업체 평점 집계 반영
+  - `rating_count`, `rating_avg` 갱신
+- 리뷰 예외코드 추가
+  - `VD004 REVIEW_NOT_FOUND` (후속 확장 대비)
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S4-4 리뷰 API (등록/목록 + 평점 반영)
+- S4-5 FE 업체 리스트 (Shadcn/ui)
