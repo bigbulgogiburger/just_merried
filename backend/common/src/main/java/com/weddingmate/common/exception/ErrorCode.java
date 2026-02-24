@@ -56,6 +56,8 @@ public enum ErrorCode {
     COMMENT_NOT_FOUND(HttpStatus.NOT_FOUND, "CM003", "Comment not found"),
     FOLLOW_NOT_FOUND(HttpStatus.NOT_FOUND, "CM004", "Follow not found"),
     FOLLOW_SELF_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "CM005", "Self follow not allowed"),
+    DM_ROOM_NOT_FOUND(HttpStatus.NOT_FOUND, "CM006", "DM room not found"),
+    DM_ROOM_ACCESS_DENIED(HttpStatus.FORBIDDEN, "CM007", "DM room access denied"),
 
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),

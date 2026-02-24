@@ -20,5 +20,24 @@
 ### 검증
 - `./gradlew :domain:compileJava :api:compileJava` ✅
 
+## S6-2 완료 ✅ (DM API)
+
+### API
+- `POST /api/v1/community/dm/rooms` (생성/재사용)
+- `GET /api/v1/community/dm/rooms`
+- `GET /api/v1/community/dm/rooms/{roomId}/messages`
+- `POST /api/v1/community/dm/rooms/{roomId}/messages`
+
+### 구현 포인트
+- 1:1 DM 방 재사용 로직
+- 참여자 검증(비참여자 접근 차단)
+- 메시지 조회/전송 구현
+- DM 관련 예외코드 추가
+  - `CM006 DM_ROOM_NOT_FOUND`
+  - `CM007 DM_ROOM_ACCESS_DENIED`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S6-2 DM API (방 생성/목록/메시지 조회·전송)
+- S6-3 알림 API (목록/단건읽음/전체읽음)
