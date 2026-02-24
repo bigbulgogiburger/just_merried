@@ -23,4 +23,8 @@ public class Hashtag extends BaseTimeEntity {
         this.name = name;
         this.usageCount = 0;
     }
+
+    public void increaseUsage() {
+        this.usageCount += 1;
+    }
 }

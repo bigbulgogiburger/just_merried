@@ -20,5 +20,25 @@
 ### 검증
 - `./gradlew :domain:compileJava :api:compileJava` ✅
 
+## S5-2 완료 ✅ (게시글 API)
+
+### API
+- `POST /api/v1/community/posts`
+- `GET /api/v1/community/posts/{id}`
+- `DELETE /api/v1/community/posts/{id}`
+
+### 구현 포인트
+- 게시글 작성/상세/삭제 구현
+- 작성 권한 정책: USER만 작성 가능
+- 본인 게시글만 삭제 가능
+- 미디어/해시태그 저장 연계
+  - 해시태그 정규화 + usageCount 증가
+- 커뮤니티 예외코드 추가
+  - `CM001 POST_NOT_FOUND`
+  - `CM002 POST_ACCESS_DENIED`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S5-2 게시글 API (작성/상세/삭제 + 권한 정책)
+- S5-3 피드 API (전체/팔로잉/지역)

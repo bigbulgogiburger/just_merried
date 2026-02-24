@@ -50,6 +50,10 @@ public enum ErrorCode {
     VENDOR_COMPARE_LIMIT_EXCEEDED(HttpStatus.BAD_REQUEST, "VD003", "Compare limit exceeded"),
     REVIEW_NOT_FOUND(HttpStatus.NOT_FOUND, "VD004", "Review not found"),
 
+    // Community
+    POST_NOT_FOUND(HttpStatus.NOT_FOUND, "CM001", "Post not found"),
+    POST_ACCESS_DENIED(HttpStatus.FORBIDDEN, "CM002", "Post access denied"),
+
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),
     FILE_SIZE_EXCEEDED(HttpStatus.BAD_REQUEST, "F002", "File size exceeded"),
