@@ -139,5 +139,16 @@
 ### 검증
 - `npm run build` ✅
 
+## S6-8 완료 ✅ (마감 문서/실행 검증/스크린샷)
+
+### 문서
+- `SPRINT_S6_CLOSE_REPORT.md` 작성
+
+### 실행 검증
+- Backend `:api:bootRun` 실행 시도
+  - springdoc 버전 이슈 해결 후 DB 연결 단계까지 진행
+- Frontend `npm run dev -- --port 3100` 실행
+- 메뉴별 실행 스크린샷 11종 확보 (`screenshots/s6/*.png`)
+
 ## Next
-- S6-8 마감 문서 + Sprint6 종결 리포트
+- Sprint7 범위 정의 및 S7-1 착수
