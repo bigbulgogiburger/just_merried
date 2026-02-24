@@ -51,9 +51,14 @@ export default function VendorsPage() {
 
   return (
     <div className="wedding-container space-y-4 py-6">
-      <div className="space-y-1">
-        <h1 className="text-2xl font-bold">업체 탐색</h1>
-        <p className="text-sm text-text-secondary">카테고리/지역/가격 기준으로 업체를 비교해보세요.</p>
+      <div className="flex items-center justify-between gap-2">
+        <div className="space-y-1">
+          <h1 className="text-2xl font-bold">업체 탐색</h1>
+          <p className="text-sm text-text-secondary">카테고리/지역/가격 기준으로 업체를 비교해보세요.</p>
+        </div>
+        <Link href="/vendors/compare">
+          <Button variant="outline">비교함 보기</Button>
+        </Link>
       </div>
 
       <Card>

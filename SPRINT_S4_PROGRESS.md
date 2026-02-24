@@ -119,5 +119,23 @@
 ### 검증
 - `npm run build` ✅
 
+## S4-7 완료 ✅ (FE 비교함 화면)
+
+### Frontend
+- `app/(main)/vendors/compare/page.tsx` 추가
+  - 비교 목록 조회
+  - 비교 항목 제거
+  - 업체 상세 이동
+- `app/(main)/vendors/page.tsx` 업데이트
+  - 비교함 진입 버튼 추가
+
+### 구현 포인트
+- 비교함을 독립 화면으로 분리해 의사결정 UX 강화
+- 가격/평점/지역 핵심 항목 요약 표시
+- 상세/제거 액션을 한 블록에 배치
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S4-7 FE 비교함 화면
+- S4-8 마감 문서 + Sprint4 종결 리포트
