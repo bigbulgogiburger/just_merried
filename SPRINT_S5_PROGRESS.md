@@ -96,5 +96,22 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S5-6 완료 ✅ (해시태그/탐색 API)
+
+### API
+- `GET /api/v1/community/hashtags/trending`
+- `GET /api/v1/community/search?q=...`
+
+### 구현 포인트
+- 인기 해시태그 usageCount 기준 조회
+- 통합 검색 응답 제공
+  - posts(content)
+  - users(nickname)
+  - hashtags(name)
+- size 파라미터로 반환 개수 제어
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S5-6 해시태그/탐색 API
+- S5-7 FE 커뮤니티 핵심 화면 (Shadcn/ui)

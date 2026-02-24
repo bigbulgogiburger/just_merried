@@ -15,4 +15,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByUserIdInOrderByCreatedAtDesc(List<Long> userIds, Pageable pageable);
 
     List<Post> findByRegionOrderByCreatedAtDesc(String region, Pageable pageable);
+
+    List<Post> findByContentContainingIgnoreCaseOrderByCreatedAtDesc(String keyword, Pageable pageable);
 }
