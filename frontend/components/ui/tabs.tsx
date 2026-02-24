@@ -47,17 +47,22 @@ function TabsTrigger({
   value,
   className,
   children,
+  onClick,
 }: {
   value: string;
   className?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }) {
   const { value: current, setValue } = useTabsContext();
   const active = current === value;
   return (
     <button
       type="button"
-      onClick={() => setValue(value)}
+      onClick={() => {
+        setValue(value);
+        onClick?.();
+      }}
       className={cn(
         'rounded-md px-3 py-1.5 text-sm transition-colors',
         active ? 'bg-surface text-primary shadow-sm' : 'text-text-secondary hover:text-text-primary',

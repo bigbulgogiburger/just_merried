@@ -113,5 +113,29 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S5-7 완료 ✅ (FE 커뮤니티 핵심 화면, Shadcn/UI)
+
+### Frontend
+- `app/(main)/community/page.tsx`
+  - 피드 탭(전체/팔로잉/지역)
+  - 글작성/상세 이동
+- `app/(main)/community/create/page.tsx`
+  - 게시글 작성(내용/지역/해시태그)
+- `app/(main)/community/[id]/page.tsx`
+  - 게시글 상세
+  - 좋아요/댓글 연동
+- `app/(main)/community/user/[id]/page.tsx`
+  - 유저 프로필(팔로워/팔로잉 수)
+  - 팔로우/언팔로우 연동
+- `frontend/lib/api/s5.ts` 추가
+  - S5 API 클라이언트 집약
+
+### 구현 포인트
+- Shadcn 스타일 컴포넌트 조합으로 피드/상세/작성 UX 통일
+- 커뮤니티 핵심 루프(작성→피드→상세→댓글/좋아요) 연결
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S5-7 FE 커뮤니티 핵심 화면 (Shadcn/ui)
+- S5-8 마감 문서 + Sprint5 종결 리포트
