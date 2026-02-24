@@ -40,5 +40,20 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S5-3 완료 ✅ (피드 API)
+
+### API
+- `GET /api/v1/community/feed` (전체)
+- `GET /api/v1/community/feed/following` (팔로잉)
+- `GET /api/v1/community/feed/region` (지역)
+
+### 구현 포인트
+- page/size 기반 피드 조회
+- 팔로잉 피드는 follow 관계 기반으로 작성자 필터링
+- 지역 피드는 region 조건으로 조회
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S5-3 피드 API (전체/팔로잉/지역)
+- S5-4 좋아요/댓글 API
