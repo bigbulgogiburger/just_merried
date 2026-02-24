@@ -1,5 +1,7 @@
 # Sprint 4 진행 현황
 
+## 상태: 완료 ✅ (2026-02-24)
+
 ## S4-1 완료 ✅ (데이터/도메인 기반)
 
 ### Flyway
@@ -137,5 +139,15 @@
 ### 검증
 - `npm run build` ✅
 
+## S4-8 완료 ✅ (마감 문서)
+
+### 산출물
+- `SPRINT_S4_CLOSE_REPORT.md` 작성
+- Sprint4 완료 상태/검증 결과/다음 스프린트 핸드오프 정리
+
+### 검증 재확인
+- `./gradlew :domain:compileJava :api:compileJava` ✅
+- `npm run build` ✅
+
 ## Next
-- S4-8 마감 문서 + Sprint4 종결 리포트
+- Sprint 5 작업 분해 및 S5-1 착수
