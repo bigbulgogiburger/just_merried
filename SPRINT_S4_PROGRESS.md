@@ -41,5 +41,26 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S4-3 완료 ✅ (찜/비교 API)
+
+### API
+- 찜
+  - `POST /api/v1/vendors/{id}/favorite`
+  - `DELETE /api/v1/vendors/{id}/favorite`
+- 비교함
+  - `POST /api/v1/vendors/{id}/compare`
+  - `DELETE /api/v1/vendors/{id}/compare`
+  - `GET /api/v1/vendors/compare`
+
+### 구현 포인트
+- 사용자-업체 단위 중복 추가 방지
+- 비교함 최대 5개 제한 적용
+- 비교 목록 응답 DTO 제공 (`VendorCompareResponse`)
+- 비교함 제한 에러코드 추가
+  - `VD003 VENDOR_COMPARE_LIMIT_EXCEEDED`
+
+### 검증
+- `./gradlew :api:compileJava` ✅
+
 ## Next
-- S4-3 찜/비교 API
+- S4-4 리뷰 API (등록/목록 + 평점 반영)

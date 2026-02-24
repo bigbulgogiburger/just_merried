@@ -47,6 +47,7 @@ public enum ErrorCode {
     // Vendor
     VENDOR_NOT_FOUND(HttpStatus.NOT_FOUND, "VD001", "Vendor not found"),
     VENDOR_CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "VD002", "Vendor category not found"),
+    VENDOR_COMPARE_LIMIT_EXCEEDED(HttpStatus.BAD_REQUEST, "VD003", "Compare limit exceeded"),
 
     // File
     FILE_UPLOAD_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "F001", "File upload failed"),
