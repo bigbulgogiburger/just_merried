@@ -116,5 +116,28 @@
 ### 검증
 - `npm run build` ✅
 
+## S6-7 완료 ✅ (FE 알림센터)
+
+### Frontend
+- `app/(main)/notifications/page.tsx` 추가
+  - 알림 목록
+  - 단건 읽음/전체 읽음
+  - 타입별 배지 및 대상 이동 링크
+- `frontend/lib/api/s6.ts` 확장
+  - `getNotifications`
+  - `readNotification`
+  - `readAllNotifications`
+
+### 구현 포인트
+- 알림 미읽음 카운트 노출
+- 8초 폴링으로 최신 알림 반영
+- 알림 타입별 목적지 라우팅
+  - POST → `/community/{id}`
+  - USER → `/community/user/{id}`
+  - DM_ROOM → `/community/dm/{id}`
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S6-7 FE 알림센터
+- S6-8 마감 문서 + Sprint6 종결 리포트
