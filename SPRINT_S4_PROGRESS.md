@@ -97,5 +97,27 @@
 ### 검증
 - `npm run build` ✅
 
+## S4-6 완료 ✅ (FE 업체 상세 + 찜/비교/리뷰 연동)
+
+### Frontend
+- `app/(main)/vendors/[id]/page.tsx` 추가
+  - 업체 상세 정보/대표이미지/기본 메타
+  - 가격 패키지 목록 표시
+  - 찜/비교 토글 액션 연동
+  - 리뷰 등록/목록 연동
+- `lib/api/s4.ts` 확장
+  - `getVendorDetail`
+  - `addFavorite`, `removeFavorite`
+  - `addCompare`, `removeCompare`, `getCompareList`
+  - `createReview`, `listReviews`
+
+### 구현 포인트
+- 상세 페이지에서 핵심 상호작용(찜/비교/리뷰) 원스톱 처리
+- Shadcn 스타일 컴포넌트 조합 유지
+- 리뷰 등록 후 목록/집계 즉시 반영
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S4-6 FE 업체 상세 + 찜/비교/리뷰 연동
+- S4-7 FE 비교함 화면
