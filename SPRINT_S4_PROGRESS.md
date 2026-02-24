@@ -78,5 +78,24 @@
 ### 검증
 - `./gradlew :api:compileJava` ✅
 
+## S4-5 완료 ✅ (FE 업체 리스트, Shadcn/UI)
+
+### Frontend
+- `app/(main)/vendors/page.tsx` 추가
+  - 지역/가격 필터
+  - 정렬(최신/평점/저가/고가)
+  - 카드형 리스트
+  - 페이지네이션(클라이언트)
+- `lib/api/s4.ts` 추가
+  - `listVendors` API 클라이언트
+
+### 구현 포인트
+- Shadcn 스타일 컴포넌트(`Card`, `Input`, `Button`, `Badge`) 적용
+- 필터/정렬 조건을 API 파라미터로 전달
+- 상세 페이지 진입 CTA 연결(`/vendors/{id}`)
+
+### 검증
+- `npm run build` ✅
+
 ## Next
-- S4-5 FE 업체 리스트 (Shadcn/ui)
+- S4-6 FE 업체 상세 + 찜/비교/리뷰 연동
